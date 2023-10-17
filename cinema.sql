@@ -85,6 +85,11 @@ ALTER TABLE `cinemaShow` ADD FOREIGN KEY (`id_room`) REFERENCES `room` (`id`);
 
 ALTER TABLE `cinemaShow` ADD FOREIGN KEY (`id_film`) REFERENCES `movie` (`id`);
 
+--
+-- Contenu de la table `movie`
+--
+
+
 INSERT inTO movie (title, description, duration, image, durationStart, durationEnd, author, created_at, updated_at)
 values ('Oscar et le monde des chats', 'Oscar est un chaton qui vit paisiblement avec son père Léon, un gros chat d/’appartement. Rêveur, il croit en l/’existence de Catstopia, un monde merveilleux où vivent les chats. Il décide un jour de partir à l/’aventure !','87', '2779101.jpg', '20231018', '202311101','Jean-Michel Vovk, Charlie Langendries, Ioanna Gkizas , Franck Dacquin', '20231017', null );
 INSERT INTO  movie (title, description, duration, image, durationStart, durationEnd, author, created_at, updated_at)
@@ -99,3 +104,37 @@ INSERT INTO movie (title, description, duration, image, durationStart, durationE
 values ('Pachamama','Tepulpaï et Naïra, deux petits indiens de la Cordillère des Andes, partent à la poursuite de la Huaca, totem protecteur de leur village, confisqué par les Incas. Leur quête les mènera jusqu’à Cuzco, capitale royale assiégée par les conquistadors.', '72', '5452144.jpg','20231018' , '202311101', 'Andrea Santamaria, India Coenen, Saïd Amadis, Marie-Christine Darah, Vincent Ropion', '20231017', null );
 INSERT INTO movie (title, description, duration, image, durationStart, durationEnd, author, created_at, updated_at)
 values ('Mia et le Lion Blanc','Mia a 11 ans quand elle noue une relation hors du commun avec Charlie, un lionceau blanc né dans la ferme d''élevage de félins de ses parents en Afrique du Sud. Pendant trois ans, ils vont grandir ensemble et vivre une amitié fusionnelle. Quand Mia atteint l''âge de 14 ans elle découvre l’insoutenable vérité : son père a décidé de le vendre à des chasseurs de trophées. ', '98', '5452144.jpg','20231018' , '202311101', 'Daniah De Villiers, Mélanie Laurent, Langley Kirkwood, Ryan Mac Lennan, Lionel Newton', '20231017', null );
+
+
+CREATE TABLE `item` (
+                        `id` int(11) UNSIGNED NOT NULL,
+                        `title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `item`
+--
+
+INSERT INTO `item` (`id`, `title`) VALUES
+                                       (1, 'Stuff'),
+                                       (2, 'Doodads');
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `item`
+--
+ALTER TABLE `item`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `item`
+--
+ALTER TABLE `item`
+    MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
