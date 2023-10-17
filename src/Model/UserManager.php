@@ -34,6 +34,9 @@ class UserManager extends AbstractManager
             VALUES (:lastname, :firstname, :email, :password, :birthday,
                     CASE WHEN :role IS NULL THEN 'user' ELSE :role END)";
 
+
+
+
         $statement = $this->pdo->prepare($sql);
 
         $passwordHash = password_hash($user['password'], PASSWORD_DEFAULT);
