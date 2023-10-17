@@ -31,7 +31,8 @@ class UserManager extends AbstractManager
     public function addUser(array $user): int
     {
         $sql = "INSERT INTO user (lastname, firstname, email, password, birthday, role)
-            VALUES (:lastname, :firstname, :email, :password, :birthday,CASE WHEN :role IS NULL THEN 'user' ELSE :role END)";
+            VALUES (:lastname, :firstname, :email, :password, :birthday,
+                    CASE WHEN :role IS NULL THEN 'user' ELSE :role END)";
 
         $statement = $this->pdo->prepare($sql);
 
