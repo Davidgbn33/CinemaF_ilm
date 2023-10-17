@@ -8,8 +8,10 @@ class UserController extends AbstractController
 {
     public function add(): string
     {
-        $userAdd['lastname'] = $userAdd['firstname'] = $userAdd['email'] = $userAdd['password'] = $userAdd['birthday'] = $userAdd['role'] = "";
-        $errors['lastname'] = $errors['firstname'] = $errors['email'] = $errors['password'] = $errors['birthday'] = $errors['role'] = "";
+        $userAdd['lastname'] = $userAdd['firstname'] = $userAdd['email'] = "";
+        $userAdd['password'] = $userAdd['birthday'] = $userAdd['role'] = "";
+        $errors['lastname'] = $errors['firstname'] = $errors['email'] = "";
+        $errors['password'] = $errors['birthday'] = $errors['role'] = "";
         function checkdata($data): string
         {
             $data = trim($data);
