@@ -1,4 +1,4 @@
-CREATE DATABASE "cinema";
+CREATE DATABASE cinema;
 Use cinema;
 
 
@@ -83,7 +83,7 @@ ALTER TABLE `booking` ADD FOREIGN KEY (`id_CinemaShow`) REFERENCES `cinemaShow` 
 
 ALTER TABLE `cinemaShow` ADD FOREIGN KEY (`id_room`) REFERENCES `room` (`id`);
 
-ALTER TABLE `cinemaShow` ADD FOREIGN KEY (`id_film`) REFERENCES `movie` (`id`);
+ALTER TABLE `cinemaShow` ADD FOREIGN KEY (id_movie) REFERENCES `movie` (`id`);
 
 --
 -- Contenu de la table `movie`

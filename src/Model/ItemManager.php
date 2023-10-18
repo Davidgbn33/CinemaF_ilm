@@ -10,6 +10,8 @@ class ItemManager extends AbstractManager
 
     /**
      * Insert new item in database
+     * @return int
+     * @param array $item
      */
     public function insert(array $item): int
     {
