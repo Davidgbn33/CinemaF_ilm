@@ -1,3 +1,7 @@
-body {
-    color: red;
-}
+@import 'variables.css';
+@import  'login.css';
+
+
+/*body {
+    background-color: #131A20;
+}*/
