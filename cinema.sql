@@ -1,4 +1,4 @@
-CREATE DATABASE "cinema";
+CREATE DATABASE cinema;
 Use cinema;
 
 
