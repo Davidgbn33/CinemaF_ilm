@@ -650,8 +650,8 @@ ul.arrow li a:hover {
     min-height: 100px;
 }
 
-.contact-form .name {
-    /* background-image: url("images/icon-contact-user.png");*/
+.contact-form .password {
+     background-image: url("../images/icon-contact-user.png");
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
@@ -662,7 +662,7 @@ ul.arrow li a:hover {
 }
 
 .contact-form .email {
-    /*  background-image: url("images/icon-contact-envelope.png");*/
+      background-image: url("../images/icon-contact-envelope.png");
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
@@ -683,13 +683,13 @@ ul.arrow li a:hover {
     }
 }
 
-.contact-form .message {
-    /* background-image: url("images/icon-contact-pencil.png");*/
+.contact-form .password {
+     background-image: url("../images/icon-contact-pencil.png");
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
-    .contact-form .message {
-        /*  background-image: url("images/icon-contact-pencil@2x.png");*/
+    .contact-form .password {
+          background-image: url("../images/icon-contact-pencil@2x.png");
         background-size: 14px 14px;
     }
 }
