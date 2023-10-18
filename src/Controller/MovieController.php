@@ -13,4 +13,14 @@ class MovieController extends AbstractController
 
         return $this->twig->render('Movie/index.html.twig', ['movies' => $movies]);
     }
+    /**
+     * Show once film for a specific item
+     */
+    public function show(int $id): string
+    {
+        $movieManager = new MovieManager();
+        $movie = $movieManager->selectOneById($id);
+
+        return $this->twig->render('Movie/show.html.twig', ['movie' => $movie]);
+    }
 }
