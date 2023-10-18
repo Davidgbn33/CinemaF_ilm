@@ -16,4 +16,5 @@ return [
     'user/register' => ['UserController', 'add'],
     'user/login' => ['LoginController', 'login'],
     'user/logout' => ['LoginController', 'logout'],
+    'movie' => ['CinemashowController', 'show', ['id']],
 ];
