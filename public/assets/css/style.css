@@ -2,6 +2,7 @@
 @import 'footer.css';
 @import 'variables.css';
 @import 'login.css';
+@import "movieShow.css";
 
 article,
 aside,
