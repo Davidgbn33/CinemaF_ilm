@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Model\AnnonceManager;
 use App\Model\UserManager;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -58,7 +57,7 @@ class LoginController extends AbstractController
                         $_SESSION['user_id'] = $user['id'];
                         $userData = $_SESSION['user_id'];
 
-                        return $this->twig->render('/home/index.html.twig', ['userData' => $userData]);
+                        return $this->twig->render('/movie/index.html.twig', ['userData' => $userData]);
                     } else {
                         $errors['connexion'] = "Votre email ou votre mot de passe n'est pas valide.";
                     }
