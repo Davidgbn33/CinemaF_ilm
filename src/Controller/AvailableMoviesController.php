@@ -9,7 +9,6 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-
 class AvailableMoviesController extends AbstractController
 {
     public function show(): string
