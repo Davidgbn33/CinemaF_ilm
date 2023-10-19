@@ -19,4 +19,5 @@ return [
     'movie' => ['CinemashowController', 'show', ['id']],
     'movies' => ['MovieController', 'index'],
     'movie/show' => ['MovieController', 'show', ['id']],
+    'about' => ['AboutController', 'index'],
 ];
