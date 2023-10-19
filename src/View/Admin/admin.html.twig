@@ -1,9 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
     <h1>Hello World !</h1>
     {% for user in users %}
-        {{ user.username }}
+        <p>firstname</p>
+        {{ user.firstname }} {{ user.lastname }}<br>
 
     {% endfor %}
 {% endblock %}

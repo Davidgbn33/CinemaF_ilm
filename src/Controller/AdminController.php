@@ -13,6 +13,13 @@ class AdminController extends AbstractController
     {
         $userManager = new userManager();
         $users = $userManager->selectAll();
-        return $this->twig->render('Admin/admin.html.twig', ['users' => $users]);
+        $userData = $_SESSION['user_id'] ?? [];
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($_SESSION['user_id']);
+        } else {
+            $user = [];
+        }
+        return $this->twig->render('Admin/admin.html.twig', ['users' => $users, 'userData' => $userData, 'user' => $user]);
     }
 }
