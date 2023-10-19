@@ -17,7 +17,8 @@ class CinemashowManager extends AbstractManager
         FROM cinemashow cs
         JOIN room r ON cs.id_room = r.id
         JOIN movie m ON cs.id_movie = m.id
-        WHERE m.id = 2");
+        WHERE m.id = :id");
+        $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
