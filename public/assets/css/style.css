@@ -60,7 +60,8 @@ h1 {
     margin: 0.67em 0; }
 
 h2 {
-    font-size: 1.5em;
+    font-weight: 200;
+    font-size: 2em;
     margin: 0.83em 0; }
 
 h3 {
@@ -212,7 +213,7 @@ table {
  */
 body {
     background-color: #131a20;
-    background-image: url(dummy/background.jpg);
+    background-image: url('../images/background.jpg');
     background-position: top center;
     background-repeat: no-repeat;
     color: #84878d;
@@ -222,7 +223,7 @@ body {
     line-height: normal; }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-weight: 400;
     margin: 0 0 20px; }
 
 hr {
@@ -1520,8 +1521,7 @@ ul.arrow li a:hover {
     display: block; }
 .mobile-navigation .menu a:hover {
     color: #ffaa3c; }
-
-.main-content .container {
+.main-content .container, section.movieShow .container {
     background: white;
     border-radius: 5px;
     padding: 30px; }
@@ -1683,7 +1683,7 @@ ul.arrow li a:hover {
     width: 100%;
     border: 1px solid #bec1c8;
     background-color: transparent;
-    background-image: url(images/arrow.png);
+    /*background-image: url('../images/arrow.png'); afficher seulement si nécessaire car récup en dur dans html*/
     background-repeat: no-repeat;
     background-position: right center;
     color: inherit;
