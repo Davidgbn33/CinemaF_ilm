@@ -20,4 +20,7 @@ return [
     'movies' => ['MovieController', 'index'],
     'movie/show' => ['MovieController', 'show', ['id']],
     'about' => ['AboutController', 'index'],
+    'admin' => ['AdminController', 'index'],
+    'admin/user' => ['userController', 'show'],
+
 ];
