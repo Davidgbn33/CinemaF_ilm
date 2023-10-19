@@ -11,7 +11,7 @@ class MovieController extends AbstractController
         $movieManager = new MovieManager();
         $movies = $movieManager->selectAll();
 
-        return $this->twig->render('Movie/admin.html.twig', ['movies' => $movies]);
+        return $this->twig->render('Movie/index.html.twig', ['movies' => $movies]);
     }
     /**
      * Show once film for a specific item
