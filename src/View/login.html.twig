@@ -1,39 +1,47 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <section class=" text-center text-lg-start">
-        <div class="card mb-3">
-            <div class="row g-0 d-flex align-items-center">
-                <div class="col-lg-8">
-                    <h1 class="ms-5"> Please log in!</h1>
-                    <div class="card-body py-5 px-md-5">
-                        <form method="post">
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <input type="email" id="email" name="email" class="form-control" />
-                                <label class="form-label" for="email">Email address</label>
-                                {% if error.email is not empty %}
-                                    <p style="color: red">{{ error['email'] }}</p>
-                                {% endif %}
-                            </div>
+    <main class="main-content">
+        <div class="container">
+            <div class="page">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span>Connexion</span>
+                </div>
 
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <input type="password" id="password" name="password" class="form-control" />
-                                <label class="form-label" for="password">Password</label>
-                                {% if error.password is not empty %}
-                                    <p style="color: red">{{ error['password'] }}</p>
-                                {% endif %}
-                            </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-4 d-flex flex-column justify-content-center">
+                            <h2>Connexion</h2>
 
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
-                        </form>
+                            <form class="contact-form" method="post">
 
-                        <h6>Not a user yet? <a class="DG-color-yellow" href="/user/register">Register now!</a></h6>
+                                    <!-- Email input -->
+
+
+                                        <input type="email" id="email" name="email" class="email" placeholder="email..." />
+                                        {% if error.email is not empty %}
+                                            <p style="color: red">{{ error['email'] }}</p>
+                                        {% endif %}
+
+                                    <input type="password" id="password" name="password" class="password" placeholder="Mot de passe"/>
+                                    {% if error.password is not empty %}
+                                        <p style="color: red">{{ error['password'] }}</p>
+                                    {% endif %}
+
+                                <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
+                            </form>
+
+
+
+
+                        </div>
+                        <div class="col-md-7 col-md-offset-1">
+                            <div class="map"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </div> <!-- .container -->
+    </main>
 {% endblock %}
