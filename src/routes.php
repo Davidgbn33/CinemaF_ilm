@@ -19,6 +19,7 @@ return [
     'movie' => ['CinemashowController', 'show', ['id']],
     '' => ['MovieController', 'index'],
     'movie/show' => ['MovieController', 'show', ['id']],
+    'movie/availablemovies' => ['AvailableMoviesController', 'show'],
     'about' => ['AboutController', 'index'],
     'user/profil' => ['UserController', 'show', ['id']],
 ];
