@@ -8,33 +8,35 @@
                     <a href="/">Home</a>
                     <span>Connexion</span>
                 </div>
+
                 <div class="content">
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-4 d-flex flex-column">
-                            <h2>INSCRIPTION</h2>
+                            <h2>PROFILE</h2>
 
                             <form class="contact-form" method="post" accept-charset="UTF-8">
-                                <!-- FirstName input -->
+                                <!-- firstname -->
+                                <label for="firstname">Prénom</label>
                                 <div class="input-group mb-3 flex-nowrap">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fa-solid fa-user" style="color: #9198AF;"></i>
                                     </span>
                                     <input type="text" id="firstname" name="firstname" class="form-control mb-0"
-                                           placeholder="Prénom..."
+                                           placeholder="Prénom..." value="{{ user.firstName }}"
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                                 {% if error.firstname is not empty %}
                                     <p style="color: red">{{ error['firstname'] }}</p>
                                 {% endif %}
 
-                                <!-- lastname input -->
-
+                                <!-- lastname -->
+                                <label for="lastname">Nom</label>
                                 <div class="input-group mb-3 flex-nowrap">
                                 <span class="input-group-text" id="basic-addon1">
                                     <i class="fa-solid fa-user" style="color: #9198AF;"></i>
                                 </span>
                                     <input type="text" id="lastname" name="lastname" class="form-control mb-0"
-                                           placeholder="Nom..." aria-label="Username"
+                                           placeholder="Nom..." value="{{ user.lastname }}" aria-label="Username"
                                            aria-describedby="basic-addon1"/>
                                 </div>
                                 {% if error.lastname is not empty %}
@@ -43,58 +45,69 @@
 
 
                                 <!-- Email input -->
-
+                                <label for="email">Email</label>
                                 <div class="input-group mb-3 flex-nowrap">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fa-regular fa-envelope" style="color: #9198AF;"></i>
                                     </span>
                                     <input type="email" id="email" name="email" class="form-control mb-0"
-                                           placeholder="Email..." aria-label="Username" aria-describedby="basic-addon1">
+                                           placeholder="email..." aria-label="Username" aria-describedby="basic-addon1"
+                                           value="{{ user.email }}">
                                 </div>
                                 {% if error.email is not empty %}
                                     <p style="color: red">{{ error['email'] }}</p>
                                 {% endif %}
 
 
-                                <!-- birthdate input -->
+                                <!-- Birtday input -->
+                                <label for="birthday">Date de naissance</label>
                                 <div class="input-group mb-3 flex-nowrap">
                                 <span class="input-group-text" id="basic-addon1">
                                 <i class="fa-solid fa-cake-candles" style="color: #9198AF;"></i>
                                 </span>
                                     <input type="date" id="birthday" name="birthday" class="form-control mb-0"
-                                           placeholder="Date de naissance..."
+                                           placeholder="Date de naissance..." value="{{ user.birthday }}"
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                                 {% if error.birthday is not empty %}
                                     <p style="color: red">{{ error['birthday'] }}</p>
                                 {% endif %}
 
-                                <!-- Password input -->
-                                <div class="input-group mb-3 flex-nowrap">
-                                <span class="input-group-text" id="basic-addon1">
-                                <i class="fa-solid fa-cake-candles" style="color: #9198AF;"></i>
-                                </span>
-                                    <input type="password" id="password" name="password" class="form-control mb-0"
-                                           placeholder="Mot de passe"
-                                           aria-label="Username" aria-describedby="basic-addon1"/>
-                                </div>
-                                {% if error.password is not empty %}
-                                    <p style="color: red">{{ error['password'] }}</p>
-                                {% endif %}
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
-
+                                <button type="submit" class="btn btn-outline-warning btn-block mb-4">Mise à jour
+                                </button>
                             </form>
 
-                            <h6>Vous avez déjà un compte <a class="DG-color-yellow" href="/user/login"> connectez vous !</a></h6>
                         </div>
-                        <div class="col-md-7 col-md-offset-1 d-flex align-items-center">
-                            <img src="/assets/images/movie.jpg" alt="">
+                        <div class="col-md-7 col-md-offset-1 ">
+                            <h2>HISTORIQUE</h2>
+                                {% for bookingUser in bookingUser %}
+                            <div class="d-flex">
+                                    <div class="card mb-3" style="max-width: 450px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img src="/assets/images/{{ bookingUser.image }}"
+                                                     class="img-fluid rounded-start" alt="">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h3 class="card-text">Nom de la réservation
+                                                        : {{ bookingUser.nameBooking }}({{ bookingUser.booking_id }}
+                                                        )</h3>
+                                                    <h5 class="card-text">Film : {{ bookingUser.title }}</h5>
+                                                    <h5 class="card-text">Nombre de place
+                                                        : {{ bookingUser.numberPlace }}</h5>
+                                                    <h5 class="card-text">Date de la séance
+                                                        : {{ bookingUser.startDate }}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                                {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- .container -->
     </main>
 {% endblock %}

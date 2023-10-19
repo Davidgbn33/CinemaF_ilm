@@ -71,9 +71,9 @@
     font-weight: 400;
     line-height: 1;
     border-right: 1px solid #eeeeef; }
-.main-navigation .menu-item.current-menu-item, .main-navigation .menu-item:hover {
+.main-navigation .menu-item .current-menu-item, .main-navigation .menu-item:hover {
     position: relative; }
-.main-navigation .menu-item.current-menu-item:after, .main-navigation .menu-item:hover:after {
+.main-navigation .menu-item .current-menu-item:after, .main-navigation .menu-item:hover:after {
     content: " ";
     position: absolute;
     width: 80%;

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+
 class AboutController extends AbstractController
 {
     /**
@@ -9,6 +11,10 @@ class AboutController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('about.html.twig');
+        $userData = $_SESSION['user_id'] ?? [];
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['user_id']);
+
+        return $this->twig->render('about.html.twig', ['user' => $user, 'userData' => $userData]);
     }
 }

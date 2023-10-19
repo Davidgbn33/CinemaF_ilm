@@ -8,69 +8,108 @@ class UserController extends AbstractController
 {
     public function add(): string
     {
-        $userAdd['lastname'] = $userAdd['firstname'] = $userAdd['email'] = "";
-        $userAdd['password'] = $userAdd['birthday'] = $userAdd['role'] = "";
-        $errors['lastname'] = $errors['firstname'] = $errors['email'] = "";
-        $errors['password'] = $errors['birthday'] = $errors['role'] = "";
-        function checkdata($data): string
+        header('Content-Type: text/html; charset=UTF-8');
+
+        $userAdd = $errors = [
+            'lastname' => '',
+            'firstname' => '',
+            'email' => '',
+            'password' => '',
+            'birthday' => '',
+            'role' => ''
+        ];
+
+        function checkData($data): string
         {
-            $data = trim($data);
-            $data = htmlspecialchars($data);
-            $data = htmlentities($data);
-            return $data;
+            return htmlentities(htmlspecialchars(trim($data)));
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!isset($_POST['lastname']) | empty(trim($_POST['lastname']))) {
+            $postData = $_POST;
+
+            if (empty($postData['lastname'])) {
                 $errors['lastname'] = "Le nom est obligatoire";
             } else {
-                $userAdd['lastname'] = checkdata($_POST['lastname']);
-            }
-            if (!isset($_POST['firstname']) | empty(trim($_POST['firstname']))) {
-                $errors['firstname'] = "Le prenom est obligatoire";
-            } else {
-                $userAdd['firstname'] = checkdata($_POST['firstname']);
-            }
-            if (!isset($_POST['email']) | empty(trim($_POST['email']))) {
-                $errors['email'] = "L'email est obligatoire";
-            } else {
-                $userEmailCheck = checkdata($_POST['email']);
-                $userManager = new UserManager();
-                $userToCheck = $userManager->selectOneByEmail($userEmailCheck);
-                if (empty($userToCheck)) {
-                    $userAdd['email'] = checkdata($_POST['email']);
-                } else {
-                    $errors['email'] = "Cet email est déjà utilisé";
-                    $userAdd['email'] = checkdata($_POST['email']);
+                $userAdd['lastname'] = checkData($postData['lastname']);
+                $pattern = "/^[\p{L}\-' ]+$/u";
+                if (!preg_match($pattern, $userAdd['lastname'])) {
+                    $errors['lastname'] = "Le nom n'est pas valide.
+                     Il ne doit contenir que des lettres sans accent, des tirets ou des apostrophes.";
                 }
             }
-            if (
-                !isset($_POST['password'])
-                | empty(trim($_POST['password']))
-            ) {
-                $errors['password'] = "Le mot de passe est obligatoire";
+
+            if (empty($postData['birthday'])) {
+                $errors['birthday'] = "La date de naissance est obligatoire";
             } else {
-                $userAdd['password'] = checkdata($_POST['password']);
-                if (
-                    empty($errors['lastname']) && empty($errors['email'])
-                    && empty($errors['password']) && empty($errors['firstname'])
-                ) {
+                $userAdd['birthday'] = checkData($postData['birthday']);
+            }
+
+            if (empty($postData['firstname'])) {
+                $errors['firstname'] = "Le prénom est obligatoire";
+            } else {
+                $userAdd['firstname'] = checkData($postData['firstname']);
+                if (!preg_match($pattern, $userAdd['lastname'])) {
+                    $errors['lastname'] = "Le nom n'est pas valide.
+                     Il ne doit contenir que des lettres sans accent, des tirets ou des apostrophes.";
+                }
+            }
+
+            if (empty($postData['email'])) {
+                $errors['email'] = "L'email est obligatoire";
+            } else {
+                $userEmailCheck = checkData($postData['email']);
+                $userManager = new UserManager();
+                $userToCheck = $userManager->selectOneByEmail($userEmailCheck);
+
+                if (!empty($userToCheck)) {
+                    $errors['email'] = "Cet email est déjà utilisé";
+                }
+                $userAdd['email'] = $userEmailCheck;
+            }
+
+            if (empty($postData['password'])) {
+                $errors['password'] = "Le mot de passe est obligatoire";
+            } elseif (strlen($postData['password']) < 6) {
+                $errors['password'] = "Le mot de passe doit comporter au moins 6 caractères";
+            } else {
+                $userAdd['password'] = checkData($postData['password']);
+
+                if (empty(array_filter($errors))) {
                     $userManager = new UserManager();
-                    $lastUser = $userManager->addUser($_POST);
-                    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != "") {
-                        header('Location:/');
-                    } else {
+                    $lastUser = $userManager->addUser($postData);
+
+                    if (empty($_SESSION['user_id'])) {
                         $userManager = new UserManager();
                         $lastUser = $userManager->selectOneById($lastUser);
-
                         $user = $userManager->selectOneByEmail($lastUser['email']);
                         $_SESSION['user'] = $user;
                         $_SESSION['user_id'] = $_SESSION['user']['id'];
-                        header('Location:/');
                     }
+                    header('Location:/');
                 }
             }
         }
-        return $this->twig->render('register.html.twig', ['errors' => $errors, 'userAdd' => $userAdd]);
+
+        return $this->twig->render(
+            'register.html.twig',
+            ['error' => $errors, 'userAdd' => $userAdd]
+        );
+    }
+
+
+    public function show(int $id): string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($id);
+        $userData = $_SESSION['user_id'] ?? [];
+        $bookingUser = $userManager->viewBookingUser($id);
+
+
+        return $this->twig->render(
+            'User/profil.html.twig',
+            ['user' => $user,
+             'userData' => $userData,
+             'bookingUser' => $bookingUser]
+        );
     }
 }
