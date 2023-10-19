@@ -73,4 +73,20 @@ class UserController extends AbstractController
         }
         return $this->twig->render('register.html.twig', ['errors' => $errors, 'userAdd' => $userAdd]);
     }
+
+    public function show(int $id): string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($id);
+        $userData = $_SESSION['user_id'] ?? [];
+        $bookingUser = $userManager->viewBookingUser($id);
+
+
+        return $this->twig->render(
+            'User/profil.html.twig',
+            ['user' => $user,
+             'userDAta' => $userData,
+             'bookingUser' => $bookingUser]
+        );
+    }
 }

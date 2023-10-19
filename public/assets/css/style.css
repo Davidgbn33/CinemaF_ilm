@@ -631,7 +631,7 @@ ul.arrow li a:hover {
 .contact-form input:not([type="submit"]), .contact-form textarea {
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    padding: 10px 10px 10px 40px;
+    padding: 10px 10px 10px 10px;
     display: block;
     width: 100%;
     border-radius: 3px;
