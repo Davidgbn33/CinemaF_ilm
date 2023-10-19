@@ -13,6 +13,10 @@ class AvailableMoviesController extends AbstractController
 {
     public function show(): string
     {
-        return $this->twig->render('Movie/availableMovies.html.twig');
+        $userData = $_SESSION['user_id'] ?? [];
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['user_id']);
+
+        return $this->twig->render('Movie/availableMovies.html.twig', ['user' => $user, 'userData' => $userData]);
     }
 }

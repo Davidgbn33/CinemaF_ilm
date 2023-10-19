@@ -56,8 +56,14 @@ class LoginController extends AbstractController
                     ) {
                         $_SESSION['user_id'] = $user['id'];
                         $userData = $_SESSION['user_id'];
+                        $userManager = new UserManager();
+                        $user = $userManager->selectOneById($_SESSION['user_id']);
 
-                        return $this->twig->render('/movie/index.html.twig', ['userData' => $userData]);
+                        return $this->twig->render(
+                            '/movie/index.html.twig',
+                            ['userData' => $userData,
+                            'user' => $user]
+                        );
                     } else {
                         $errors['connexion'] = "Votre email ou votre mot de passe n'est pas valide.";
                     }

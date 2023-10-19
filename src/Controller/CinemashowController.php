@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Model\CinemashowManager;
 use App\Model\BookingManager;
+use App\Model\UserManager;
 
 class CinemashowController extends AbstractController
 {
     public function show(int $id): string
     {
         $userData = $_SESSION['user_id'] ?? [];
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['user_id']);
         $booking = array();
         $cinemaShowManager = new CinemashowManager();
         $bookingManager = new BookingManager();
@@ -29,7 +32,7 @@ class CinemashowController extends AbstractController
             $booking['id_CinemaShow'] = intval($_POST['csId']);
             $bookingManager->insert($booking);
         }
-        return $this->twig->render('Item/movie.html.twig', ['cinemashow' => $cinemaShow, 'userData' => $userData]);
+        return $this->twig->render('Item/movie.html.twig', ['cinemashow' => $cinemaShow, 'userData' => $userData, 'user' => $user]);
     }
 
     private function calcTotalPrice(int $nbrSeat0, int $nbrSeat25, int $nbrSeat50): float|int

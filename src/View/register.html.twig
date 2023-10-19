@@ -1,68 +1,100 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <section class=" text-center text-lg-start">
-        <div class="card mb-3">
-            <div class="row g-0 d-flex align-items-center">
-                <div class="col-lg-8">
-                    <h1 class="ms-5"> Please Register!</h1>
-                    <div class="card-body py-5 px-md-5">
-                        <form method="post">
-                            <!-- FirstName input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="lastname">Last Name</label>
-                                <input type="text" id="lastname" name="lastname" class="form-control" />
-                                {% if errors.lastname is not empty %}
-                                    <p style="color: red">{{ errors['lastname'] }}</p>
+    <main class="main-content">
+        <div class="container">
+            <div class="page">
+                <div class="breadcrumbs">
+                    <a href="/">Home</a>
+                    <span>Connexion</span>
+                </div>
+                <div class="content">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-4 d-flex flex-column">
+                            <h2>INSCRIPTION</h2>
+
+                            <form class="contact-form" method="post" accept-charset="UTF-8">
+                                <!-- FirstName input -->
+                                <div class="input-group mb-3 flex-nowrap">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa-solid fa-user" style="color: #9198AF;"></i>
+                                    </span>
+                                    <input type="text" id="firstname" name="firstname" class="form-control mb-0"
+                                           placeholder="Prénom..."
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                </div>
+                                {% if error.firstname is not empty %}
+                                    <p style="color: red">{{ error['firstname'] }}</p>
                                 {% endif %}
-                            </div>
 
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="firstname">First Name</label>
-                                <input type="text" id="firstname" name="firstname" class="form-control" />
-                                {% if errors.firstname is not empty %}
-                                    <p style="color: red">{{ errors['firstname'] }}</p>
+                                <!-- lastname input -->
+
+                                <div class="input-group mb-3 flex-nowrap">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa-solid fa-user" style="color: #9198AF;"></i>
+                                </span>
+                                    <input type="text" id="lastname" name="lastname" class="form-control mb-0"
+                                           placeholder="Nom..." aria-label="Username"
+                                           aria-describedby="basic-addon1"/>
+                                </div>
+                                {% if error.lastname is not empty %}
+                                    <p style="color: red">{{ error['lastname'] }}</p>
                                 {% endif %}
-                            </div>
 
 
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="email">Email address</label>
-                                <input type="email" id="email" name="email" class="form-control" />
-                                {% if errors.email is not empty %}
-                                    <p style="color: red">{{ errors['email'] }}</p>
+                                <!-- Email input -->
+
+                                <div class="input-group mb-3 flex-nowrap">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa-regular fa-envelope" style="color: #9198AF;"></i>
+                                    </span>
+                                    <input type="email" id="email" name="email" class="form-control mb-0"
+                                           placeholder="Email..." aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                {% if error.email is not empty %}
+                                    <p style="color: red">{{ error['email'] }}</p>
                                 {% endif %}
-                            </div>
 
-                            <!-- birthdate input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="birthday">Date de naissance</label>
-                                <input type="date" id="birthday" name="birthday" class="form-control" />
-                                {% if errors.password is not empty %}
-                                    <p style="color: red">{{ errors['birthday'] }}</p>
+
+                                <!-- birthdate input -->
+                                <div class="input-group mb-3 flex-nowrap">
+                                <span class="input-group-text" id="basic-addon1">
+                                <i class="fa-solid fa-cake-candles" style="color: #9198AF;"></i>
+                                </span>
+                                    <input type="date" id="birthday" name="birthday" class="form-control mb-0"
+                                           placeholder="Date de naissance..."
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                </div>
+                                {% if error.birthday is not empty %}
+                                    <p style="color: red">{{ error['birthday'] }}</p>
                                 {% endif %}
-                            </div>
 
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="password">Password</label>
-                                <input type="password" id="password" name="password" class="form-control" />
-                                {% if errors.password is not empty %}
-                                    <p style="color: red">{{ errors['password'] }}</p>
+                                <!-- Password input -->
+                                <div class="input-group mb-3 flex-nowrap">
+                                <span class="input-group-text" id="basic-addon1">
+                                <i class="fa-solid fa-cake-candles" style="color: #9198AF;"></i>
+                                </span>
+                                    <input type="password" id="password" name="password" class="form-control mb-0"
+                                           placeholder="Mot de passe"
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                </div>
+                                {% if error.password is not empty %}
+                                    <p style="color: red">{{ error['password'] }}</p>
                                 {% endif %}
-                            </div>
 
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
 
-                        </form>
+                            </form>
 
-                        <h6>Already a user? <a class="DG-color-yellow" href="/user/login">Log in now!</a></h6>
+                            <h6>Vous avez déjà un compte <a class="DG-color-yellow" href="/user/login"> connectez vous !</a></h6>
+                        </div>
+                        <div class="col-md-7 col-md-offset-1 d-flex align-items-center">
+                            <img src="/assets/images/movie.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 {% endblock %}

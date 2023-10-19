@@ -14,30 +14,38 @@
                         <div class="col-md-4 d-flex flex-column justify-content-center">
                             <h2>Connexion</h2>
 
-                            <form class="contact-form" method="post">
+                            <form class="contact-form" method="post" accept-charset="UTF-8">
 
-                                    <!-- Email input -->
+                                <!-- Email input -->
+                                <div class="input-group mb-3 flex-nowrap">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa-regular fa-envelope" style="color: #9198AF;"></i>
+                                    </span>
+                                    <input type="email" id="email" name="email" class="form-control mb-0"
+                                           placeholder="email..." aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                {% if error.email is not empty %}
+                                    <p style="color: red">{{ error['email'] }}</p>
+                                {% endif %}
 
-
-                                        <input type="email" id="email" name="email" class="email" placeholder="email..." />
-                                        {% if error.email is not empty %}
-                                            <p style="color: red">{{ error['email'] }}</p>
-                                        {% endif %}
-
-                                    <input type="password" id="password" name="password" class="password" placeholder="Mot de passe"/>
-                                    {% if error.password is not empty %}
-                                        <p style="color: red">{{ error['password'] }}</p>
-                                    {% endif %}
+                                <div class="input-group mb-3 flex-nowrap">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa-solid fa-lock" style="color: #9198AF;"></i>
+                                    </span>
+                                    <input type="password" id="password" name="password" class="form-control mb-0"
+                                           placeholder="Mot de passe" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                {% if error.password is not empty %}
+                                    <p style="color: red">{{ error['password'] }}</p>
+                                {% endif %}
 
                                 <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
                             </form>
-
-
-
+                            <h6>Pas encore inscrit ! <a class="DG-color-yellow" href="/user/register"> inscrivez vous !</a></h6>
 
                         </div>
                         <div class="col-md-7 col-md-offset-1">
-                            <div class="map"></div>
+                            <img src="/assets/images/movie-theater.jpg" alt="">
                         </div>
                     </div>
                 </div>
