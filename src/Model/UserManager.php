@@ -34,9 +34,6 @@ class UserManager extends AbstractManager
             VALUES (:lastname, :firstname, :email, :password, :birthday,
                     CASE WHEN :role IS NULL THEN 'user' ELSE :role END)";
 
-
-
-
         $statement = $this->pdo->prepare($sql);
 
         $passwordHash = password_hash($user['password'], PASSWORD_DEFAULT);
@@ -50,5 +47,24 @@ class UserManager extends AbstractManager
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    public function viewBookingUser(int $id): array
+    {
+        $sql = "SELECT b.id AS booking_id,
+       m.image,
+       b.nameBooking,
+       b.numberPlace,
+       m.title,
+       c.startDate
+FROM booking b
+         INNER JOIN User u ON b.id_user = u.id
+         INNER JOIN cinemaShow c ON b.id_CinemaShow = c.id
+         INNER JOIN movie m ON c.id_movie = m.id
+         WHERE u.id = :id";
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 }
