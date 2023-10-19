@@ -12,8 +12,13 @@
             <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
             <ul class="menu">
                 <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
+                {% if userData %}
+                <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
+                <li class="menu-item"><a href="/user/profile">Profil</a></li>
+                {% elseif not userData %}
                 <li class="menu-item"><a href="/user/register">Inscription</a></li>
                 <li class="menu-item"><a href="/user/login">Connexion</a></li>
+                {% endif %}
                 <li class="menu-item"><a href="/user/about">A propos</a></li>
                 <li class="menu-item"><a href="/user/contact">Contact</a></li>
             </ul> <!-- .menu -->
