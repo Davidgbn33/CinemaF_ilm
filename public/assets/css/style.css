@@ -69,7 +69,8 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 2em;
+    font-weight: 200;
     margin: 0.83em 0;
 }
 
@@ -255,7 +256,7 @@ table {
  */
 body {
     background-color: #131a20;
-    /*background-image: url(dummy/background.jpg);*/
+    background-image: url(../images/background.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     color: #84878d;
@@ -266,7 +267,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-weight: 400;
     margin: 0 0 20px;
 }
 
@@ -651,7 +652,7 @@ ul.arrow li a:hover {
 }
 
 .contact-form .password {
-     background-image: url("../images/icon-contact-user.png");
+     /*background-image: url("../images/icon-contact-user.png");*/
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
@@ -689,7 +690,7 @@ ul.arrow li a:hover {
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
     .contact-form .password {
-          background-image: url("../images/icon-contact-pencil@2x.png");
+         /* background-image: url("../images/icon-contact-pencil@2x.png");*/
         background-size: 14px 14px;
     }
 }
@@ -1862,7 +1863,8 @@ ul.arrow li a:hover {
 }
 
 
-.main-content .container {
+.main-content .container,
+section.movieShow .container {
     background: white;
     border-radius: 5px;
     padding: 30px;
