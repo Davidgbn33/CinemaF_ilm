@@ -1,5 +1,8 @@
-<header class="site-header">
-    <div class="container">
+
+
+<nav>
+<header class="navbar navbar-expand-lg bg-body-tertiarysite-header">
+    <div class="container-fluid ">
         <a href="index.html" id="branding">
             <img src="/assets/images/logo.png" alt="" class="logo">
             <div class="logo-copy">
@@ -8,28 +11,32 @@
             </div>
         </a> <!-- #branding -->
 
-        <div class="main-navigation">
-            <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-            <ul class="menu">
-                <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
-                {% if user.role == 'user' %}
-                <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
-                <li class="menu-item"><a href="/user/profil?id={{ userData}}">Mon compte</a></li>
-                {% elseif user.role == 'admin' %}
-                    <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
-                    <li class="menu-item"><a href="/user/profil?id={{ userData}}">Mon compte</a></li>
-                    <li class="menu-item"><a href="/admin">Administration</a></li>
-                {% else %}
-                <li class="menu-item"><a href="/user/register">Inscription</a></li>
-                <li class="menu-item"><a href="/user/login">Connexion</a></li>
-                {% endif %}
-                <li class="menu-item"><a href="/about">A propos</a></li>
-            </ul> <!-- .menu -->
-
-            <form action="#" class="search-form">
-                <input type="text" placeholder="Search...">
-                <button><i class="fa fa-search"></i></button>
-            </form>
+        <div class="main-navigation d-flex">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation" style="
+    height: 40px;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
+                    {% if user.role == 'user' %}
+                        <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
+                        <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
+                    {% elseif user.role == 'admin' %}
+                        <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
+                        <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
+                        <li class="menu-item"><a href="/admin">Administration</a></li>
+                        <li class="menu-item"><a href="/movie/availablemovies">Ajout film</a></li>
+                    {% else %}
+                        <li class="menu-item"><a href="/user/register">Inscription</a></li>
+                        <li class="menu-item"><a href="/user/login">Connexion</a></li>
+                    {% endif %}
+                    <li class="menu-item"><a href="/about">A propos</a></li>
+                </ul>
+            </div><!-- .menu -->
         </div>
     </div>
 </header>
+</nav>
