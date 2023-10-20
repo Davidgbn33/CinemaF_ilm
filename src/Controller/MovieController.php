@@ -32,7 +32,12 @@ class MovieController extends AbstractController
         $movie = $movieManager->selectOneById($id);
         $userData = $_SESSION['user_id'] ?? [];
         $userManager = new UserManager();
-        $user = $userManager->selectOneById($_SESSION['user_id']);
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($_SESSION['user_id']);
+        } else {
+            $user = [];
+        }
 
         return $this->twig->render('Movie/show.html.twig', ['movie' => $movie, 'userData' => $userData]);
     }
