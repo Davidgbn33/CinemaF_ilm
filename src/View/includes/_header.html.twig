@@ -1,42 +1,47 @@
+<header class="site-header">
+    <nav class="container">
+        <div class="navbar navbar-expand-lg bg-body-tertiarysite-header d-flex">
+            <div class="container-fluid justify-content-end">
+                <div class="flex-grow-1">
+                    <a href="index.html" id="branding">
+                        <img src="/assets/images/logo.png" alt="" class="logo">
+                        <div class="logo-copy">
+                            <h1 class="site-title">CINETECH</h1>
+                            <small class="site-description">Des films, des billets, un click!</small>
+                        </div>
+                    </a>
+                </div><!-- #branding -->
 
-
-<nav>
-<header class="navbar navbar-expand-lg bg-body-tertiarysite-header">
-    <div class="container-fluid ">
-        <a href="index.html" id="branding">
-            <img src="/assets/images/logo.png" alt="" class="logo">
-            <div class="logo-copy">
-                <h1 class="site-title">CINETECH</h1>
-                <small class="site-description">Des films, des billets, un click!</small>
-            </div>
-        </a> <!-- #branding -->
-
-        <div class="main-navigation d-flex">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation" style="
+                <div class="main-navigation d-flex">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="
     height: 40px;">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
-                    {% if user.role == 'user' %}
-                        <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
-                        <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
-                    {% elseif user.role == 'admin' %}
-                        <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
-                        <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
-                        <li class="menu-item"><a href="/admin">Administration</a></li>
-                        <li class="menu-item"><a href="/movie/availablemovies">Ajout film</a></li>
-                    {% else %}
-                        <li class="menu-item"><a href="/user/register">Inscription</a></li>
-                        <li class="menu-item"><a href="/user/login">Connexion</a></li>
-                    {% endif %}
-                    <li class="menu-item"><a href="/about">A propos</a></li>
-                </ul>
-            </div><!-- .menu -->
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
+                            {% if user.role == 'user' %}
+                                <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
+                                <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
+                            {% elseif user.role == 'admin' %}
+                                <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
+                                <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
+                                <li class="menu-item"><a href="/admin">Administration</a></li>
+                                <li class="menu-item"><a href="/movie/availablemovies">Ajout film</a></li>
+                            {% else %}
+                                <li class="menu-item"><a href="/user/register">Inscription</a></li>
+                                <li class="menu-item"><a href="/user/login">Connexion</a></li>
+                            {% endif %}
+                            <li class="menu-item"><a href="/about">A propos</a></li>
+                        </ul>
+                    </div><!-- .menu -->
+                </div>
+            </div>
         </div>
-    </div>
+                        {% if userData %}
+                        <p class="d-flex justify-content-end greenhaze me-3 mb-0 dg-mt">Bienvenue {{ user.firstname }} {{ user.lastname }}</p>
+                        {% endif %}
+    </nav>
 </header>
-</nav>

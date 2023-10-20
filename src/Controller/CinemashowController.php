@@ -38,7 +38,11 @@ class CinemashowController extends AbstractController
             $booking['id_CinemaShow'] = intval($_POST['csId']);
             $bookingManager->insert($booking);
         }
-        return $this->twig->render('Movie/show.html.twig', ['cinemashow' => $cinemaShow, 'userData' => $userData, 'user' => $user]);
+        return $this->twig->render(
+            'Item/movie.html.twig',
+            ['cinemashow' => $cinemaShow, 'userData' => $userData,
+            'user' => $user]
+        );
     }
 
     private function calcTotalPrice(int $nbrSeat0, int $nbrSeat25, int $nbrSeat50): float|int

@@ -4,6 +4,13 @@
 @import 'login.css';
 @import "movieShow.css";
 
+.btn btn-outline-warning btn-block btn-md-4{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
 article,
 aside,
 details,
@@ -2077,5 +2084,8 @@ section.movieShow .container {
 
 .movie-meta li, .starring li {
     margin-bottom: 10px;
+}
+.dg-height {
+    min-height: 55vh;
 }
 
