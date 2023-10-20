@@ -1,3 +1,4 @@
+/* button validate */
 .btn-outline-warning {
     border-radius: 3px;
     border-color: #FFAA3C;
@@ -7,6 +8,10 @@
     background-color: #FFAA3C;
     color: white;
 }
+/* hide div reservation */
 div#clSeancesInput{
     display: none;
+}
+span.btn-plus-norm:hover, span.btn-minus-norm:hover {
+    cursor: pointer;
 }
