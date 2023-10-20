@@ -256,15 +256,18 @@ table {
  * Global Styles
  */
 body {
-    background-color: #131a20;
     background-image: url(../images/background.jpg);
     background-position: top center;
     background-repeat: no-repeat;
+    background-color: #131a20;
     color: #84878d;
     font-family: "Roboto", "Open Sans", sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: normal;
+}
+#site-content{
+
 }
 
 h1, h2, h3, h4, h5, h6 {
