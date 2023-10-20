@@ -3,11 +3,11 @@
         <div class="navbar navbar-expand-lg bg-body-tertiarysite-header d-flex">
             <div class="container-fluid justify-content-end">
                 <div class="flex-grow-1">
-                    <a href="index.html" id="branding">
+                    <a href="/" id="branding">
                         <img src="/assets/images/logo.png" alt="" class="logo">
                         <div class="logo-copy">
                             <h1 class="site-title">CINETECH</h1>
-                            <small class="site-description">Des films, des billets, un click!</small>
+                            <small class="site-description">Des films, des billets, un click !</small>
                         </div>
                     </a>
                 </div><!-- #branding -->
@@ -15,10 +15,21 @@
                 <div class="main-navigation d-flex">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation" style="
-    height: 40px;">
+                            aria-expanded="false" aria-label="Toggle navigation" style="height: 40px;">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+{#                    fixer le hover sur le bouton du menu en fonction de la page en cours#}
+                    <script>
+                        const togIcon = document.querySelector("span.navbar-toggler-icon");
+                        const currentUrl = window.location.pathname;
+                        console.log(currentUrl);
+                        // Ajout d'une classe à la span en fonction de l'URL actuelle
+                        togIcon.classList.add(`navbar-toggler-icon-${currentUrl}`);
+                        // Suppression de la classe de la span lorsque l'utilisateur quitte la page
+                        window.addEventListener("popstate", function() {
+                            togIcon.classList.remove(`navbar-toggler-icon-${currentUrl}`);
+                        });
+                    </script>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
@@ -40,9 +51,13 @@
                 </div>
             </div>
         </div>
-        {% if userData != null %}
-            <p class="d-flex justify-content-end greenhaze me-3 mb-0 dg-mt">
-                Bienvenue {{ user.firstname }} {{ user.lastname }}</p>
-        {% endif %}
+        <div class="mt-2">
+
+            {% if userData != null %}
+                <p class="d-flex justify-content-end greenhaze me-3 mb-0 dg-mt">
+                    Bienvenue {{ user.firstname }} {{ user.lastname }}</p>
+            {% endif %}
+
+        </div>
     </nav>
 </header>
