@@ -1,7 +1,7 @@
 const apiKey = '7edec4eb';
+
 let apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=les&y=2023&type=movie`;
 const movieListDiv = document.querySelector('.movie-list');
-
 
 
 // Afficher les films
@@ -11,8 +11,6 @@ const getMovies = () => {
             return res.json()
         })
         .then(function (data) {
-            console.log(data.Search)
-
             for(movie of data.Search)     {
                 movieListDiv.innerHTML += `
             <div class="movie" style="margin-bottom:80px;">
@@ -49,7 +47,6 @@ searchForm.addEventListener('submit', function(e) {
                 return res.json()
             })
             .then(function (data) {
-                console.log(data.Search)
             if (data.Search != null) {
                 for(movie of data.Search) {
                     movieListDiv.innerHTML += `
