@@ -13,7 +13,12 @@ class AboutController extends AbstractController
     {
         $userData = $_SESSION['user_id'] ?? [];
         $userManager = new UserManager();
-        $user = $userManager->selectOneById($_SESSION['user_id']);
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($_SESSION['user_id']);
+        } else {
+            $user = [];
+        }
 
         return $this->twig->render('about.html.twig', ['user' => $user, 'userData' => $userData]);
     }
