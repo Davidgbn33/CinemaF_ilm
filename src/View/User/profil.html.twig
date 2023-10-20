@@ -22,8 +22,8 @@
                                         <i class="fa-solid fa-user" style="color: #9198AF;"></i>
                                     </span>
                                     <input type="text" id="firstname" name="firstname" class="form-control mb-0"
-                                           placeholder="Prénom..." value="{{ user.firstName }}"
-                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                           placeholder="Prénom..." value="{{ user.firstname }}"
+                                           aria-label="firstname" aria-describedby="basic-addon1"/>
                                 </div>
                                 {% if error.firstname is not empty %}
                                     <p style="color: red">{{ error['firstname'] }}</p>

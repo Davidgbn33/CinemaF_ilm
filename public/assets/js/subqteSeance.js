@@ -1,10 +1,13 @@
-const input = document.querySelector('#clPriceNorm');
+// let input = document.querySelector('#clPriceNorm');
 const spanMinus = document.querySelector('.btn-minus-norm');
-function subQteSeance() {
-    spanMinus.addEventListener('click', function () {
-        // Incrémentez la valeur de l'input
+function subQteSeance(){
+    // Incrémentez la valeur de l'input
         if (input.value > 0) {
             input.value--;
         }
-    });
 }
+spanMinus.addEventListener('click', function() {
+    // Affiche la valeur actuelle de l'input
+    console.log(input.value);
+});
+

@@ -20,7 +20,7 @@
                             <li><strong>Scénaristes:</strong> Chris Sanders (screenplay), Kirk De Micco (screenplay)
                             </li>
                         </ul>
-                        <button class="btn btn-lg button">Voir les séances disponibles</button>
+                        <button href="#anchorSeance" class="btn btn-lg button" id="btn-viewSeances" spellcheck="true">Voir les séances disponibles</button>
                     </div>
                 </div>
                 <div class="entry-content mt-3">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <h2 class="mt-3">Les séances</h2>
+            <h2 class="mt-3" id="anchorSeance">Les séances</h2>
             <form action="">
                 <div class="d-flex flex-row flex-wrap align-items-start">
                     <div class="content clSeanceFull flex-grow-1" id="clMovieSeance">
@@ -316,5 +316,14 @@
             </form>
         </div>
     </section>
+    <script>
+        const buttonViewSeances = document.querySelector('#btn-viewSeances');
+        const anchorViewSeances = document.querySelector('#anchorSeance');
+
+        buttonViewSeances.addEventListener('click', function() {
+            window.scrollTo(anchorViewSeances.offsetLeft, anchorViewSeances.offsetTop);
+        });
+
+    </script>
 
 {% endblock %}

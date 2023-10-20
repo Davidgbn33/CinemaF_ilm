@@ -20,7 +20,12 @@ class AdminController extends AbstractController
         } else {
             $user = [];
         }
-        return $this->twig->render('Admin/admin.html.twig', ['users' => $users, 'userData' => $userData, 'user' => $user]);
+        return $this->twig->render(
+            'Admin/admin.html.twig',
+            ['users' => $users,
+                'userData' => $userData,
+            'user' => $user]
+        );
     }
 
     public function delete(int $id): string
