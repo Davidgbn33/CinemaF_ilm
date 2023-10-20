@@ -7,8 +7,13 @@
                 <div class="container">
                     <div class="page">
                         <div class="breadcrumbs">
-                            <span>Les films disponibles prochainement</span>
+                            <h1>Les films disponibles en rediffusion</h1>
                         </div>
+                        <form action="{{ app.request.uri }}" method="get" class="mb-5" id="searchForm">
+                            <label for="searchInput">Rechercher un film :</label>
+                            <input type="search" id="searchInput" name="q" placeholder="Entrez votre recherche ici" required>
+                            <input type="submit" value="Rechercher">
+                        </form>
                         <div class="movie-list">
                         </div> <!-- .movie-list -->
                     </div>
