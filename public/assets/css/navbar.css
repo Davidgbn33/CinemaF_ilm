@@ -1,14 +1,20 @@
 
 .site-header {
-    padding: 50px 0;
-    *zoom: 1; }
+    padding: 34px 0;
+}
+img.logo {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+img.logo:hover {
+    transform: scale(1.1);
+}
 .site-header:after {
     content: " ";
     clear: both;
     display: block;
     overflow: hidden;
     height: 0; }
-
 #branding {
     float: left; }
 #branding .logo, #branding .logo-copy {
