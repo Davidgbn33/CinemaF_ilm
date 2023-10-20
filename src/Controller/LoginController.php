@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\MovieManager;
 use App\Model\UserManager;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -16,6 +17,9 @@ class LoginController extends AbstractController
      */
     public function login(): string
     {
+        $movieManager = new MovieManager();
+        $movies = $movieManager->selectAll();
+
         $userTab = ['email' => []];
         $userTab['password'] = [];
         $errors = ['email' => []];
@@ -62,7 +66,8 @@ class LoginController extends AbstractController
                         return $this->twig->render(
                             '/movie/index.html.twig',
                             ['userData' => $userData,
-                            'user' => $user]
+                            'user' => $user,
+                                'movies' => $movies]
                         );
                     } else {
                         $errors['connexion'] = "Votre email ou votre mot de passe n'est pas valide.";
@@ -70,7 +75,7 @@ class LoginController extends AbstractController
                 }
             }
         }
-        return $this->twig->render('login.html.twig', ['error' => $errors, 'user' => $userTab]);
+        return $this->twig->render('login.html.twig', ['error' => $errors, 'user' => $userTab, 'movies' => $movies]);
     }
 
     public function logout(): void
