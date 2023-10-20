@@ -18,7 +18,7 @@ return [
     'user/logout' => ['LoginController', 'logout'],
     'movie' => ['CinemashowController', 'show', ['id']],
     '' => ['MovieController', 'index'],
-    'movie/show' => ['MovieController', 'show', ['id']],
+    'movie/show' => ['CinemashowController', 'show', ['id']],
     'movie/availablemovies' => ['AvailableMoviesController', 'show'],
     'about' => ['AboutController', 'index'],
     'admin' => ['AdminController', 'index'],
