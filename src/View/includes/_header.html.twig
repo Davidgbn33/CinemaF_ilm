@@ -40,5 +40,8 @@
                 </div>
             </div>
         </div>
+                        {% if userData %}
+                        <p class="d-flex justify-content-end greenhaze me-3 mb-0 dg-mt">Bienvenue {{ user.firstname }} {{ user.lastname }}</p>
+                        {% endif %}
     </nav>
 </header>

@@ -2078,4 +2078,7 @@ section.movieShow .container {
 .movie-meta li, .starring li {
     margin-bottom: 10px;
 }
+.dg-height {
+    min-height: 55vh;
+}
 

@@ -19,3 +19,13 @@
 .boulder {
     color: #757575
 }
+.dg-card-img-top {
+    height: 150px; /* Définissez la hauteur souhaitée */
+    object-fit: cover; /* Assurez-vous que l'image couvre la hauteur spécifiée sans déformation */
+}
+.dg-card-text {
+    height: 150px;
+}
+.dg-mt{
+    margin-top: -20px;
+}

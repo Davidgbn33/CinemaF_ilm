@@ -1,39 +1,35 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
-            <div class="te-admin-grid">
-                <aside class="te-admin-aside te-height-cat">
-                </aside>
-                <main class="te-admin-main d-flex justify-content-center flex-column">
+                <main class=" d-flex justify-content-center flex-column dg-height">
                     <h1 class="text-center fs-2 mt-3">Liste des utilisateurs</h1>
                     <div class="container mt-3">
                         <div class="">
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th class="te-col-name">Prenom</th>
-                                    <th class="te-col-60">Nom</th>
-                                    <th class="te-col-60">Email</th>
-                                    <th class="te-col-60">Crée le</th>
-                                    <th class="te-col-60">Modifié le</th>
-                                    <th class="te-col-60">Supprimer</th>
+                                    <th class="">Prenom</th>
+                                    <th class="">Nom</th>
+                                    <th class="">Email</th>
+                                    <th class="">Crée le</th>
+                                    <th class="">Modifié le</th>
+                                    <th class="text-center">Supprimer</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for user in users %}
                                     <tr>
-                                        <td class="te-col-name">{{ user.firstname }}</td>
-                                        <td class="te-col-60">{{ user.lastname }}</td>
-                                        <td class="te-col-60">{{ user.email }}</td>
-                                        <td class="te-col-60">{{ user.created_at }}</td>
-                                        <td class="te-col-60">{{ user.updated_at }}</td>
-                                        <td class="te-col-60 text-center"><a href="/admin/delete?id={{ user.id }}"><i class="fa-solid fa-trash"></i></a></td>
+                                        <td class="">{{ user.firstname }}</td>
+                                        <td class="">{{ user.lastname }}</td>
+                                        <td class="">{{ user.email }}</td>
+                                        <td class="">{{ user.created_at }}</td>
+                                        <td class="">{{ user.updated_at }}</td>
+                                        <td class="text-center"><a href="/admin/delete?id={{ user.id }}"><i class="fa-solid fa-trash"></i></a></td>
                                 {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </main>
-            </div>
+
 {% endblock %}
