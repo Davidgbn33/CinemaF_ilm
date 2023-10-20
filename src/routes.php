@@ -22,5 +22,7 @@ return [
     'movie/availablemovies' => ['AvailableMoviesController', 'show'],
     'about' => ['AboutController', 'index'],
     'admin' => ['AdminController', 'index'],
+    'admin/user' => ['userController', 'show'],
+    'admin/delete' => ['AdminController', 'delete', ['id']],
     'user/profil' => ['UserController', 'edit', ['id']],
 ];
