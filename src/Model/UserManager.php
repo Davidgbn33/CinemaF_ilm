@@ -67,4 +67,23 @@ FROM booking b
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    public function editUser(array $user): bool
+    {
+        $sql = "UPDATE " . self::TABLE . " SET
+                   `firstname` = :firstname,
+                   `birthday` = :birthday,
+                   `email` = :email,
+                   `lastname` = :lastname
+                   WHERE id =:id";
+        $stm = $this->pdo->prepare($sql);
+
+        $stm->bindValue(':firstname', $user['firstname'], PDO::PARAM_STR);
+        $stm->bindValue(':birthday', $user['birthday'], PDO::PARAM_STR);
+        $stm->bindValue(':email', $user['email'], PDO::PARAM_STR);
+        $stm->bindValue(':id', $user['id'], PDO::PARAM_INT);
+        $stm->bindValue(':lastname', $user['lastname'], PDO::PARAM_STR);
+
+        return $stm->execute();
+    }
 }

@@ -112,4 +112,35 @@ class UserController extends AbstractController
              'bookingUser' => $bookingUser]
         );
     }
+
+    public function edit(int $id): string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($id);
+        $userData = $_SESSION['user_id'] ?? [];
+        $bookingUser = $userManager->viewBookingUser($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = array_map('trim', $_POST);
+            $user['id'] = $_SESSION['user_id'];
+            $user['role']= $_SESSION['user']['role'];
+            $userManager->editUser($user);
+            $userData = $_SESSION['user_id'] ?? [];
+            $bookingUser = $userManager->viewBookingUser($id);
+            return $this->twig->render(
+                'User/profil.html.twig',
+                ['user' => $user,
+                    'userData' => $userData,
+                    'bookingUser' => $bookingUser]
+            );
+        }
+
+
+        return $this->twig->render(
+            'User/profil.html.twig',
+            ['user' => $user,
+                'userData' => $userData,
+            'bookingUser' => $bookingUser]
+        );
+    }
 }
