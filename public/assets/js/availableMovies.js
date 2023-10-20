@@ -15,16 +15,18 @@ const getMovies = () => {
 
             for(movie of data.Search)     {
                 movieListDiv.innerHTML += `
-            <div class="movie">
+            <div class="movie" style="margin-bottom:80px;">
                 <figure class="movie-poster">
                     <img src="${movie.Poster}" alt="${movie.Title}" style="height:300px;object-fit:cover">
                 </figure>
-                <div class="movie-title">
-                    <a href="#">${movie.Title}</a>
+                <div class="movie-title" style="height:70px;">
+                    <a style="font-size:20px;font-weight:bold">${movie.Title}</a>
                 </div>
+                <div class="movie-information">
                     <p>Année de sortie: ${movie.Year}</p>
                     <a href="https://www.imdb.com/title/${movie.imdbID}/" target="_blank">Voir la fiche sur IMDB</a>
-                    <button>Ajouter aux projections</button>
+                    <button class="button addMovie w-100">Ajouter aux projections</button>
+                </div>
             </div>
                 `;
             }
@@ -51,15 +53,18 @@ searchForm.addEventListener('submit', function(e) {
             if (data.Search != null) {
                 for(movie of data.Search) {
                     movieListDiv.innerHTML += `
-            <div class="movie">
+            <div class="movie" style="margin-bottom:80px;">
                 <figure class="movie-poster">
                     <img src="${movie.Poster}" alt="${movie.Title}" style="height:300px;object-fit:cover">
                 </figure>
-                <div class="movie-title">
-                    <a href="#">${movie.Title}</a>
+                <div class="movie-title" style="height:70px;">
+                    <a style="font-size:20px;font-weight:bold">${movie.Title}</a>
                 </div>
+                <div class="movie-information">
                     <p>Année de sortie: ${movie.Year}</p>
                     <a href="https://www.imdb.com/title/${movie.imdbID}/" target="_blank">Voir la fiche sur IMDB</a>
+                    <button class="button addMovie w-100">Ajouter aux projections</button>
+                </div>
             </div>
                 `
                 }
