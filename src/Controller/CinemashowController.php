@@ -39,7 +39,7 @@ class CinemashowController extends AbstractController
             $bookingManager->insert($booking);
         }
         return $this->twig->render(
-            'Item/movie.html.twig',
+            'Movie/show.html.twig',
             ['cinemashow' => $cinemaShow, 'userData' => $userData,
             'user' => $user]
         );
