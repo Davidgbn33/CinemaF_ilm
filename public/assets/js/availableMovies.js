@@ -1,4 +1,5 @@
-const apiKey = '7edec4eb';
+
+console.log('Clé API:', apiKey);
 
 let apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=les&y=2023&type=movie`;
 const movieListDiv = document.querySelector('.movie-list');
