@@ -123,7 +123,7 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = array_map('trim', $_POST);
             $user['id'] = $_SESSION['user_id'];
-            $user['role']= $_SESSION['user']['role'];
+            $user['role'] = $_SESSION['user']['role'];
             $userManager->editUser($user);
             $userData = $_SESSION['user_id'] ?? [];
             $bookingUser = $userManager->viewBookingUser($id);
