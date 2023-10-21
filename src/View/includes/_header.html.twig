@@ -16,38 +16,28 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation" style="height: 40px;">
-                        <span class="navbar-toggler-icon"></span>
+{#                        <span class="navbar-toggler-icon"></span> Je ne vois pas l'utilité de cette span
+sauf peut-être pour la recherche#}
                     </button>
 {#                    fixer le hover sur le bouton du menu en fonction de la page en cours#}
-                    <script>
-                        const togIcon = document.querySelector("span.navbar-toggler-icon");
-                        const currentUrl = window.location.pathname;
-                        console.log(currentUrl);
-                        // Ajout d'une classe à la span en fonction de l'URL actuelle
-                        togIcon.classList.add(`navbar-toggler-icon-${currentUrl}`);
-                        // Suppression de la classe de la span lorsque l'utilisateur quitte la page
-                        window.addEventListener("popstate", function() {
-                            togIcon.classList.remove(`navbar-toggler-icon-${currentUrl}`);
-                        });
-                    </script>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="menu-item current-menu-item"><a href="/">Accueil</a></li>
+                            <li class="menu-item current-menu-item" id="/"><a href="/">Accueil</a></li>
                             {% if user.role == 'user' %}
                                 <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
-                                <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
+                                <li class="menu-item" id="/user/profil"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
                             {% elseif user.role == 'admin' %}
                                 <li class="menu-item"><a href="/user/logout">Déconnexion</a></li>
-                                <li class="menu-item"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
-                                <li class="menu-item"><a href="/admin">Administration</a></li>
-                                <li class="menu-item"><a href="/movie/availablemovies">Ajout film</a></li>
+                                <li class="menu-item" id="/user/profil"><a href="/user/profil?id={{ userData }}">Mon compte</a></li>
+                                <li class="menu-item" id="/admin"><a href="/admin">Administration</a></li>
+                                <li class="menu-item" id="/admin/addmovie"><a href="/movie/availablemovies">Ajout film</a></li>
                             {% else %}
-                                <li class="menu-item"><a href="/user/register">Inscription</a></li>
-                                <li class="menu-item"><a href="/user/login">Connexion</a></li>
+                                <li class="menu-item" id="/user/register"><a href="/user/register">Inscription</a></li>
+                                <li class="menu-item" id="/user/login"><a href="/user/login">Connexion</a></li>
                             {% endif %}
-                            <li class="menu-item"><a href="/about">A propos</a></li>
+                            <li class="menu-item" id="/about"><a href="/about">A propos</a></li>
                         </ul>
-                    </div><!-- .menu -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,3 +51,25 @@
         </div>
     </nav>
 </header>
+<script>
+
+    // Récupérez l'URL de la page actuelle
+    var currentURL = window.location.pathname;
+    console.log(currentURL);
+
+    // Parcourez tous les éléments de menu et recherchez celui correspondant à la page actuelle
+    var liItems = document.querySelectorAll("li.menu-item");
+    console.log(liItems);
+
+    liItems.forEach(function (liItem) {
+        let link = liItem.getAttribute("id");
+    console.log(link);
+
+        // je récupère attribut href de mon a
+        if (link === currentURL) {
+            liItem.classList.add("current-menu-item");
+        } else {
+            liItem.classList.remove("current-menu-item");
+        }
+    });
+</script>
