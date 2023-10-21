@@ -23,8 +23,6 @@ class CinemashowController extends AbstractController
         $cinemaShow = $cinemaShowManager->selectJoinById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_POST['nbr_seat_25']);
-            var_dump(intval($_POST['csId']));
             $booking['nameBooking'] = $user['firstname'];
             $booking['numberPlace'] = intval($_POST['nbr_seat_0'])
                 + intval($_POST['nbr_seat_25'])
