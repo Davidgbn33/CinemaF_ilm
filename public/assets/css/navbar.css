@@ -1,14 +1,20 @@
 
 .site-header {
-    padding: 50px 0;
-    *zoom: 1; }
+    padding: 34px 0;
+}
+img.logo {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+img.logo:hover {
+    transform: scale(1.1);
+}
 .site-header:after {
     content: " ";
     clear: both;
     display: block;
     overflow: hidden;
     height: 0; }
-
 #branding {
     float: left; }
 #branding .logo, #branding .logo-copy {
@@ -71,9 +77,12 @@
     font-weight: 400;
     line-height: 1;
     border-right: 1px solid #eeeeef; }
-.main-navigation .menu-item .current-menu-item, .main-navigation .menu-item:hover {
+/* bottom edge of fixed menu or displayed on hover */
+ul.navbar-nav li.current-menu-item,
+.main-navigation .menu-item:hover{
     position: relative; }
-.main-navigation .menu-item .current-menu-item:after, .main-navigation .menu-item:hover:after {
+ul.navbar-nav li.current-menu-item:after,
+.main-navigation .menu-item:hover:after{
     content: " ";
     position: absolute;
     width: 80%;

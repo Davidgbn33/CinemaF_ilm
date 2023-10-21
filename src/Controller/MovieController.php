@@ -20,8 +20,12 @@ class MovieController extends AbstractController
             $user = [];
         }
 
-
-        return $this->twig->render('Movie/index.html.twig', ['movies' => $movies, 'userData' => $userData, 'user' => $user]);
+        return $this->twig->render(
+            'Movie/index.html.twig',
+            ['movies' => $movies,
+                'userData' => $userData,
+            'user' => $user]
+        );
     }
     /**
      * Show once film for a specific item
@@ -39,6 +43,11 @@ class MovieController extends AbstractController
             $user = [];
         }
 
-        return $this->twig->render('Movie/show.html.twig', ['movie' => $movie, 'userData' => $userData]);
+        return $this->twig->render(
+            'Movie/show.html.twig',
+            ['movie' => $movie,
+                'userData' => $userData,
+            'user' => $user]
+        );
     }
 }

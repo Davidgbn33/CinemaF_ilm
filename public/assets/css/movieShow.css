@@ -8,23 +8,6 @@
     background-color: #FFAA3C;
     color: white;
 }
-/* hide div reservation */
-
-
-/* Animation pour afficher le formulaire */
-#bookingForm.show {
-    display: block;
-    animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
 span.btn-plus-norm:hover, span.btn-minus-norm:hover {
     cursor: pointer;
