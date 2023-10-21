@@ -49,7 +49,7 @@
                             <a class="button" id="{{ cs.id }}" role="button">Réserver</a>
                         </div>
                         <div class="d-flex flex-column" id="{{ cs.id }}">
-                            <form method="post" name="booking_form" action="/user/profil?id={{ user.id }}">
+                            <form method="post" name="booking_form">
 
                                 {# Div avec les inputs #}
                                 <div id="d-{{ cs.id }}" class="flex-column clSeancesInput" data-id="{{ cinemashow[0].id }}">
