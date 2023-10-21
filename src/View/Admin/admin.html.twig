@@ -1,8 +1,37 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
                 <main class=" d-flex justify-content-center flex-column dg-height">
-                    <h1 class="text-center fs-2 mt-3">Liste des utilisateurs</h1>
+                    <h2 class="text-center fs-2 mt-3">Liste des films</h2>
+                    <div class="container mt-3">
+                        <div class="">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="">titre</th>
+                                    <th class="">Description</th>
+                                    <th class="">Durée</th>
+                                    <th class="">Image</th>
+                                    <th class="text-center">Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for movie in movies %}
+                                <tr>
+                                    <td class="">{{ movie.title }}</td>
+                                    <td class="">{{ movie.description }}</td>
+                                    <td class="">{{ movie.duration }} min</td>
+                                    <td class=""><img src="/assets/images/{{ movie.image }}" alt="{{ movie.title }}" style="width: 50px;"></td>
+
+
+                                    <td class="text-center"><a href="/admin/delete?id={{ user.id }}"><i class="fa-solid fa-trash"></i></a></td>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h2 class="text-center fs-2 mt-3">Liste des utilisateurs</h2>
                     <div class="container mt-3">
                         <div class="">
                             <table class="table">
@@ -11,8 +40,6 @@
                                     <th class="">Prenom</th>
                                     <th class="">Nom</th>
                                     <th class="">Email</th>
-                                    <th class="">Crée le</th>
-                                    <th class="">Modifié le</th>
                                     <th class="text-center">Supprimer</th>
                                 </tr>
                                 </thead>
@@ -22,8 +49,6 @@
                                         <td class="">{{ user.firstname }}</td>
                                         <td class="">{{ user.lastname }}</td>
                                         <td class="">{{ user.email }}</td>
-                                        <td class="">{{ user.created_at }}</td>
-                                        <td class="">{{ user.updated_at }}</td>
                                         <td class="text-center"><a href="/admin/delete?id={{ user.id }}"><i class="fa-solid fa-trash"></i></a></td>
                                 {% endfor %}
                                 </tbody>
