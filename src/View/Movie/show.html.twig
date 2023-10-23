@@ -4,6 +4,7 @@
 
     <section class="movieShow" id="clMovieShowDesc">
         <div class="container">
+            <p class="text-danger">{{ erreur }}</p>
             <div class="breadcrumbs d-flex">
                 <a href="/">Acceuil</a>
                 <p class="arrow d-inline-block"><img src="/assets/images/arrow.png">
@@ -58,7 +59,8 @@
                             <form method="post" name="booking_form">
 
                                 {# Div avec les inputs #}
-                                <div id="d-{{ cs.id }}" class="flex-column clSeancesInput" data-id="{{ cinemashow[0].id }}">
+                                <div id="d-{{ cs.id }}" class="flex-column clSeancesInput"
+                                     data-id="{{ cinemashow[0].id }}">
                                     <div class="clSeanceInput">
                                         <div class="d-flex flex-column align-items-center">
                                             <span class="fw-bold">Tarif Normal</span>
@@ -66,7 +68,8 @@
 
                                                 {# Bouton - TARIF NORMAL #}
                                                 <input type="hidden" value="{{ cs.id }}" name="csId">
-                                                <input type="number" name="nbr_seat_0" class="form-control form-control-sm">
+                                                <input type="number" name="nbr_seat_0"
+                                                       class="form-control form-control-sm">
                                                 {# Bouton + TARIF NORMAL #}
                                             </div>
                                         </div>
@@ -78,7 +81,8 @@
 
                                                 {# Bouton - TARIF -26 #}
                                                 <input type="hidden" value="{{ cs.id }}" name="csId">
-                                                <input type="number" name="nbr_seat_25" class="form-control form-control-sm">
+                                                <input type="number" name="nbr_seat_25"
+                                                       class="form-control form-control-sm">
                                                 {# Bouton + TARIF -26 #}
                                             </div>
                                         </div>
@@ -90,7 +94,8 @@
 
                                                 {# Bouton - TARIF -14 #}
                                                 <input type="hidden" value="{{ cs.id }}" name="csId">
-                                                <input type="number" name="nbr_seat_50" class="form-control form-control-sm">
+                                                <input type="number" name="nbr_seat_50"
+                                                       class="form-control form-control-sm">
                                                 {# Bouton + TARIF -14 #}
                                             </div>
                                         </div>
@@ -101,13 +106,13 @@
                                     </div>
                                 </div>
                             </form>
-                            {#<form method="post" name="booking_form">
+                            {# <form method="post" name="booking_form">
                                 <input type="hidden" value="{{ cs.id }}" name="csId">
                                 <input type="number" name="nbr_seat_0">
                                 <input type="number" name="nbr_seat_25">
                                 <input type="number" name="nbr_seat_50">
                                 <input type="submit" value="Valider">
-                            </form>#}
+                            </form> #}
                         </div>
                     </div>
                 {% endfor %}
@@ -121,12 +126,12 @@
         //Caches les div contenant les inputs
 
         divs.forEach(function (div) {
-           div.style.display = "none";
+            div.style.display = "none";
         });
 
         //Ajoutes des écouteurs de click sur les boutons
 
-        buttons.forEach(function(button) {
+        buttons.forEach(function (button) {
             button.addEventListener("click", () => {
                 const buttonId = button.id;
                 const correspondingDiv = document.getElementById("d-" + buttonId);

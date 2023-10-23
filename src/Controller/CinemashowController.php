@@ -28,6 +28,7 @@ class CinemashowController extends AbstractController
             $user = $userManager->selectOneById($_SESSION['user_id']);
         } else {
             $user = [];
+            return $this->twig->render('includes/404.html.twig',);
         }
         $booking = array();
         $cinemaShowManager = new CinemashowManager();
@@ -35,25 +36,42 @@ class CinemashowController extends AbstractController
         $cinemaShow = $cinemaShowManager->selectJoinById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $booking['nameBooking'] = $user['firstname'];
-            $booking['numberPlace'] = intval($_POST['nbr_seat_0'])
-                + intval($_POST['nbr_seat_25'])
-                + intval($_POST['nbr_seat_50']);
-            $booking['totalPrice'] = $this->calcTotalPrice(
-                intval($_POST['nbr_seat_0']),
-                intval($_POST['nbr_seat_25']),
-                intval($_POST['nbr_seat_50'])
-            );
-            $booking['id_user'] = $user['id'];
-            $booking['id_CinemaShow'] = intval($_POST['csId']);
-            $bookingManager->insert($booking);
+            if (
+                intval($_POST['nbr_seat_0']) < 0
+                || intval($_POST['nbr_seat_25'])
+                || intval($_POST['nbr_seat_50'])
+                ||
+                    intval($_POST['nbr_seat_0']) +
+                    intval($_POST['nbr_seat_25']) +
+                    intval($_POST['nbr_seat_50'])
+                    < 1
+            ) {
+                return $this->twig->render(
+                    'Movie/show.html.twig',
+                    ['cinemashow' => $cinemaShow, 'userData' => $userData,
+                        'user' => $user, 'erreur' => 'Entrer un nombre de place valide']
+                );
+            } else {
+                $booking['nameBooking'] = $user['firstname'];
+                $booking['numberPlace'] = intval($_POST['nbr_seat_0'])
+                    + intval($_POST['nbr_seat_25'])
+                    + intval($_POST['nbr_seat_50']);
+                $booking['totalPrice'] = $this->calcTotalPrice(
+                    intval($_POST['nbr_seat_0']),
+                    intval($_POST['nbr_seat_25']),
+                    intval($_POST['nbr_seat_50'])
+                );
+                $booking['id_user'] = $user['id'];
+                $booking['id_CinemaShow'] = intval($_POST['csId']);
+                $bookingManager->insert($booking);
+            }
 
-            header('Location:/user/profil?id='.$userData );
+            header('Location:/user/profil?id=' . $userData);
         }
         return $this->twig->render(
             'Movie/show.html.twig',
             ['cinemashow' => $cinemaShow, 'userData' => $userData,
-            'user' => $user]
+            'user' => $user, 'erreur' => '']
         );
     }
 
