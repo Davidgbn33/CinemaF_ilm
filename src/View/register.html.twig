@@ -6,7 +6,7 @@
             <div class="page">
                 <div class="breadcrumbs">
                     <a href="/">Home</a>
-                    <span>Connexion</span>
+                    <span>Inscription</span>
                 </div>
                 <div class="content">
                     <div class="row d-flex justify-content-center">
@@ -83,7 +83,35 @@
                                 {% endif %}
 
                                 <!-- Submit button -->
-                                <button type="submit" class="btn btn-outline-warning btn-block mb-4">Sign in</button>
+
+                                <button type="submit" class="btn btn-outline-warning d-grid gap-2 col-6 mx-auto">S'INSCRIRE</button>
+
+                                    <!-- Checkbox for general condition -->
+
+                                   <!-- <div class="form-group">
+                                        {% if accepte-conditions %}
+                                        <input type="checkbox" id="accepte-conditions" name="accepter_conditions" required>
+                                        <label for="accepter_conditions">J'accepte les <a href="#" target="_blank">conditions générales d'utilisation</a></label>
+                                        {% endif %}
+                                    </div>
+                                        -->
+
+
+                                <div>
+                                    {% if accepte-conditions %}
+                                    <input type="checkbox" id="accepte-conditions" name="accepter-conditions" required />
+                                    <label for="accepter-conditions">Conditions générales d'utilisation</label>
+                                    {% endif %}
+                                </div>
+
+
+                                <div>
+                                    {% if accepte-confidentiality %}
+                                    <input type="checkbox" id="accepte-confidentiality" name="accepter-confidentialité"  required/>
+                                    <label for="horns">Conditions générales de confidentialité</label>
+                                    {% endif %}
+                                </div>
+
 
                             </form>
 
