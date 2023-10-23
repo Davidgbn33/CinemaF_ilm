@@ -4,16 +4,18 @@ namespace App\Controller;
 
 use App\Model\MovieManager;
 use App\Model\UserManager;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
+/**
+ * Class LoginController
+ * @package App\Controller
+ * @property MovieManager
+ * @property UserManager
+ */
 class LoginController extends AbstractController
 {
     /**
-     * @throws SyntaxError
-     * @throws RuntimeError
-     * @throws LoaderError
+     * visualisation de la page de connexion
+     * @return string
      */
     public function login(): string
     {
@@ -70,6 +72,10 @@ class LoginController extends AbstractController
         return $this->twig->render('login.html.twig', ['error' => $errors, 'user' => $userTab, 'movies' => $movies]);
     }
 
+    /**
+     * function pour se déconnecter
+     * @return void
+     */
     public function logout(): void
     {
         unset($_SESSION['user_id']);
