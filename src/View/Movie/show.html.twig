@@ -111,9 +111,11 @@
     <script>
         let buttons = document.querySelectorAll(".button");
         let divs = document.querySelectorAll(".clSeancesInput");
+        //Cache toutes les divs qui contiennent les inputs
         divs.forEach(function (div) {
            div.style.display = "none";
         });
+        //
         buttons.forEach(function(button) {
             button.addEventListener("click", () => {
                 const buttonId = button.id;
