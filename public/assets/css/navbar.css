@@ -149,3 +149,7 @@ ul.navbar-nav li.current-menu-item:after,
     display: block; }
 .mobile-navigation .menu a:hover {
     color: #ffaa3c; }
+
+#disconnectBt {
+    color: #dc2626;
+}
