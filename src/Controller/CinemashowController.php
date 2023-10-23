@@ -28,7 +28,6 @@ class CinemashowController extends AbstractController
             $user = $userManager->selectOneById($_SESSION['user_id']);
         } else {
             $user = [];
-            return $this->twig->render('includes/404.html.twig',);
         }
         $booking = array();
         $cinemaShowManager = new CinemashowManager();
