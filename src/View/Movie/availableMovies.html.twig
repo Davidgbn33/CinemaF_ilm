@@ -6,8 +6,11 @@
             <main class="main-content">
                 <div class="container">
                     <div class="page">
-                        <div class="breadcrumbs">
-                            <h1>Les films disponibles en rediffusion</h1>
+                        <div class="breadcrumbs d-flex">
+                            <a href="/">Acceuil</a>
+                            <p class="arrow d-inline-block"><img src="/assets/images/arrow.png">
+                                <span>Ajout d'un film</span>
+                            </p>
                         </div>
                         <form action="{{ app.request.uri }}" method="get" class="mb-5" id="searchForm">
                             <label for="searchInput">Rechercher un film :</label>
