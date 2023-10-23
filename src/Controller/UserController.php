@@ -24,7 +24,8 @@ class UserController extends AbstractController
             'email' => '',
             'password' => '',
             'birthday' => '',
-            'role' => ''
+            'role' => '',
+            'checkbox' => ''
         ];
 
         function checkData($data): string
@@ -50,6 +51,11 @@ class UserController extends AbstractController
                 $errors['birthday'] = "La date de naissance est obligatoire";
             } else {
                 $userAdd['birthday'] = checkData($postData['birthday']);
+            }
+            if (empty($postData['checkbox']) || $postData['checkbox'] !== "1") {
+                $errors['checkbox'] = "La case à cocher est obligatoire";
+            } else {
+                $userAdd['checkbox'] = $postData['checkbox'];
             }
 
             if (empty($postData['firstname'])) {
