@@ -24,7 +24,7 @@ const getMovies = () => {
                 <div class="movie-information">
                     <p>Année de sortie: ${movie.Year}</p>
                     <a href="https://www.imdb.com/title/${movie.imdbID}/" target="_blank">Voir la fiche sur IMDB</a>
-                    <button class="button addMovie w-100">Ajouter aux projections</button>
+                    <button class="button addMovie w-100 mt-3">Ajouter aux projections</button>
                 </div>
             </div>
                 `;
