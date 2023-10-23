@@ -4,6 +4,12 @@
 
     <section class="movieShow" id="clMovieShowDesc">
         <div class="container">
+            <div class="breadcrumbs d-flex">
+                <a href="/">Acceuil</a>
+                <p class="arrow d-inline-block"><img src="/assets/images/arrow.png">
+                    <span>{{ cinemashow[0].title }}</span>
+                </p>
+            </div>
             <div class="content">
                 <div class="row">
                     <div class="col-md-4">
@@ -111,19 +117,27 @@
     <script>
         let buttons = document.querySelectorAll(".button");
         let divs = document.querySelectorAll(".clSeancesInput");
+
+        //Caches les div contenant les inputs
+
         divs.forEach(function (div) {
            div.style.display = "none";
         });
+
+        //Ajoutes des écouteurs de click sur les boutons
+
         buttons.forEach(function(button) {
             button.addEventListener("click", () => {
                 const buttonId = button.id;
                 const correspondingDiv = document.getElementById("d-" + buttonId);
 
+                //affiche la div clické et cache les autres
+
                 if (correspondingDiv) {
                     if (correspondingDiv.style.display === "none") {
                         console.log(buttonId);
                         correspondingDiv.style.display = "block";
-                        divs.forEach(function(div) {
+                        divs.forEach(function (div) {
                             if (div.id != correspondingDiv.id) {
                                 div.style.display = "none";
                             }
@@ -131,8 +145,6 @@
                     } else {
                         correspondingDiv.style.display = "none";
                     }
-                } else {
-                    console.log("La div correspondante n'existe pas.");
                 }
             });
         });
