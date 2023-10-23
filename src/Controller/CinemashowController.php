@@ -35,6 +35,8 @@ class CinemashowController extends AbstractController
             $booking['id_user'] = $user['id'];
             $booking['id_CinemaShow'] = intval($_POST['csId']);
             $bookingManager->insert($booking);
+
+            header('Location:/user/profil?id='.$userData );
         }
         return $this->twig->render(
             'Movie/show.html.twig',
