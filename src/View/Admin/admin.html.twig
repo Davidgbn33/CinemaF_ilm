@@ -2,18 +2,25 @@
 
 {% block content %}
 
-    <main class=" d-flex justify-content-center flex-column dg-height">
+    <main class="main-content">
         <div class="container mt-3">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button fs-3" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Liste des films
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
+            <div class="page">
+                <div class="breadcrumbs d-flex">
+                    <a href="/">Acceuil</a>
+                    <p class="arrow d-inline-block"><img src="/assets/images/arrow.png">
+                        <span>Administration</span>
+                    </p>
+                </div>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fs-3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Liste des films
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
 
                                 <div class="">
                                     <table class="table">
@@ -43,18 +50,18 @@
                                     </table>
                                 </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fs-3" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Liste des utilisateurs
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fs-3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Liste des utilisateurs
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
 
                                 <div class="">
                                     <table class="table">
@@ -79,10 +86,10 @@
                                     </table>
                                 </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                {#<div class="accordion-item">
+                    {# <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -99,7 +106,8 @@
                             <code>.accordion-body</code>, though the transition does limit overflow.
                         </div>
                     </div>
-                </div>#}
+                </div> #}
+                </div>
             </div>
         </div>
 
