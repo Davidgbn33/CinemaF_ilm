@@ -6,8 +6,20 @@ use App\Model\CinemashowManager;
 use App\Model\BookingManager;
 use App\Model\UserManager;
 
+/**
+ * Class CinemashowController
+ * @package App\Controller
+ * @property CinemashowManager
+ * @property BookingManager
+ * @property UserManager
+ */
 class CinemashowController extends AbstractController
 {
+    /**
+     * visualisation de la page des films disponibles
+     * @param int $id
+     * @return string
+     */
     public function show(int $id): string
     {
         $userData = $_SESSION['user_id'] ?? [];
@@ -35,6 +47,8 @@ class CinemashowController extends AbstractController
             $booking['id_user'] = $user['id'];
             $booking['id_CinemaShow'] = intval($_POST['csId']);
             $bookingManager->insert($booking);
+
+            header('Location:/user/profil?id='.$userData );
         }
         return $this->twig->render(
             'Movie/show.html.twig',
@@ -43,6 +57,13 @@ class CinemashowController extends AbstractController
         );
     }
 
+    /**
+     * Calcule le prix total de la commande
+     * @param int $nbrSeat0
+     * @param int $nbrSeat25
+     * @param int $nbrSeat50
+     * @return float|int
+     */
     private function calcTotalPrice(int $nbrSeat0, int $nbrSeat25, int $nbrSeat50): float|int
     {
         $totalPrice = 0;

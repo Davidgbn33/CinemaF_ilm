@@ -4,8 +4,16 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
+/**
+ * Class UserController
+ * @package App\Controller
+ */
 class UserController extends AbstractController
 {
+    /**
+     * ajout d'un utilisateur
+     * @return string
+     */
     public function add(): string
     {
         header('Content-Type: text/html; charset=UTF-8');
@@ -16,7 +24,8 @@ class UserController extends AbstractController
             'email' => '',
             'password' => '',
             'birthday' => '',
-            'role' => ''
+            'role' => '',
+            'checkbox' => ''
         ];
 
         function checkData($data): string
@@ -42,6 +51,11 @@ class UserController extends AbstractController
                 $errors['birthday'] = "La date de naissance est obligatoire";
             } else {
                 $userAdd['birthday'] = checkData($postData['birthday']);
+            }
+            if (empty($postData['checkbox']) || $postData['checkbox'] !== "1") {
+                $errors['checkbox'] = "La case à cocher est obligatoire";
+            } else {
+                $userAdd['checkbox'] = $postData['checkbox'];
             }
 
             if (empty($postData['firstname'])) {
@@ -96,7 +110,11 @@ class UserController extends AbstractController
         );
     }
 
-
+    /**
+     * visualisation de la page de connexion
+     * @param int $id
+     * @return void
+     */
     public function show(int $id): string
     {
         $userManager = new UserManager();
@@ -113,6 +131,11 @@ class UserController extends AbstractController
         );
     }
 
+    /**
+     * Mise à jour d'un utilisateur
+     * @param int $id
+     * @return void
+     */
     public function edit(int $id): string
     {
         $userManager = new UserManager();

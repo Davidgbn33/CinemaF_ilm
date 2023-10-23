@@ -55,6 +55,7 @@ class UserManager extends AbstractManager
        m.image,
        b.nameBooking,
        b.numberPlace,
+       b.totalPrice,
        m.title,
        c.startDate
 FROM booking b

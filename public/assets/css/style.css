@@ -227,25 +227,33 @@ button[disabled],
 input[disabled] {
     cursor: default;
 }
-
+/* checkbox CGU */
 input[type="checkbox"],
 input[type="radio"] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0;
 }
-
+.form-check-input:checked {
+    background-color: #ffaa3c;
+}
+div.form-check input[type="checkbox"]{
+    width: auto;
+    background-position: 0;
+}
+.form-check {
+    display: flex;
+    align-items: center;
+}
 input[type="search"] {
     -webkit-appearance: textfield;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
-
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
 }
-
 button::-moz-focus-inner, input::-moz-focus-inner {
     border: 0;
     padding: 0;

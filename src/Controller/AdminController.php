@@ -5,10 +5,16 @@ namespace App\Controller;
 use App\Model\MovieManager;
 use App\Model\UserManager;
 
+/**
+ * Class AdminController
+ * @package App\Controller
+ * @property UserManager
+ * @property MovieManager
+ */
 class AdminController extends AbstractController
 {
     /**
-     * Display admin
+     *visualisation de la page  admin
      * @return string
      */
     public function index(): string
@@ -20,7 +26,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Display admin
+     * function pour supprimer un utilisateur
      * @param int $id
      * @return string
      */
@@ -32,8 +38,9 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Display admin
+     * function pour modifier un utilisateur
      * @param UserManager $userManager
+     * @param MovieManager $movieManager
      * @return string
      */
     public function extracted(UserManager $userManager, MovieManager $movieManager): string
