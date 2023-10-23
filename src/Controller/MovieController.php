@@ -5,8 +5,18 @@ namespace App\Controller;
 use App\Model\MovieManager;
 use App\Model\UserManager;
 
+/**
+ * Class MovieController
+ * @package App\Controller
+ * @property MovieManager
+ * @property UserManager
+ */
 class MovieController extends AbstractController
 {
+    /**
+     * Voir tous les films
+     * @return string
+     */
     public function index(): string
     {
 
@@ -28,7 +38,9 @@ class MovieController extends AbstractController
         );
     }
     /**
-     * Show once film for a specific item
+     * Voir un film en particulier
+     * @param int $id
+     * @return string
      */
     public function show(int $id): string
     {

@@ -7,13 +7,21 @@ use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 
 /**
- * Initialized some Controller common features (Twig...)
+ * Initialisation des Controller avec les caractéristiques communes (Twig...)
+ * Class AbstractController
+ * @package App\Controller
+ * @property Environment $twig
+ * @property string
+ * @property DebugExtension
+ * @property FilesystemLoader
  */
 abstract class AbstractController
 {
     protected Environment $twig;
 
-
+    /**
+     * AbstractController constructor.
+     */
     public function __construct()
     {
         $loader = new FilesystemLoader(APP_VIEW_PATH);

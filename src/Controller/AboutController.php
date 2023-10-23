@@ -7,12 +7,12 @@ use App\Model\UserManager;
 class AboutController extends AbstractController
 {
     /**
-     * Display home page
+     * visualisation de la page à propos
+     * @return string
      */
     public function index(): string
     {
         $userData = $_SESSION['user_id'] ?? [];
-        $userManager = new UserManager();
         if (isset($_SESSION['user_id'])) {
             $userManager = new UserManager();
             $user = $userManager->selectOneById($_SESSION['user_id']);
