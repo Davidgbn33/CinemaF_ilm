@@ -48,18 +48,19 @@ class AdminController extends AbstractController
         $movies = $movieManager->selectAll();
         $users = $userManager->selectAll();
         $userData = $_SESSION['user_id'] ?? [];
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id']) && $_SESSION['user']['role'] === "admin") {
             $userManager = new UserManager();
             $user = $userManager->selectOneById($_SESSION['user_id']);
+            return $this->twig->render(
+                'Admin/admin.html.twig',
+                ['users' => $users,
+                    'userData' => $userData,
+                    'user' => $user,
+                    'movies' => $movies,]
+            );
         } else {
             $user = [];
+            return $this->twig->render('includes/404.html.twig',);
         }
-        return $this->twig->render(
-            'Admin/admin.html.twig',
-            ['users' => $users,
-                'userData' => $userData,
-                'user' => $user,
-                'movies' => $movies,]
-        );
     }
 }
