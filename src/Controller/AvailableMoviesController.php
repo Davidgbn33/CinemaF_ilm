@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
-use App\Model\ItemManager;
-use App\Model\CinemashowManager;
 use App\Model\UserManager;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
+/**
+ * Class AvailableMoviesController
+ * @package App\Controller
+ */
 class AvailableMoviesController extends AbstractController
 {
+    /**
+     * visualisation de la page des films disponibles
+     * @return string
+     */
     public function show(): string
     {
         $userData = $_SESSION['user_id'] ?? [];

@@ -4,16 +4,18 @@ namespace App\Controller;
 
 use App\Model\MovieManager;
 use App\Model\UserManager;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
+/**
+ * Class LoginController
+ * @package App\Controller
+ * @property MovieManager
+ * @property UserManager
+ */
 class LoginController extends AbstractController
 {
     /**
-     * @throws SyntaxError
-     * @throws RuntimeError
-     * @throws LoaderError
+     * visualisation de la page de connexion
+     * @return string
      */
     public function login(): string
     {
@@ -59,16 +61,8 @@ class LoginController extends AbstractController
                         && password_verify($_POST['password'], $user['password'])
                     ) {
                         $_SESSION['user_id'] = $user['id'];
-                        $userData = $_SESSION['user_id'];
-                        $userManager = new UserManager();
-                        $user = $userManager->selectOneById($_SESSION['user_id']);
 
-                        return $this->twig->render(
-                            '/movie/index.html.twig',
-                            ['userData' => $userData,
-                            'user' => $user,
-                                'movies' => $movies]
-                        );
+                        header('Location:/');
                     } else {
                         $errors['connexion'] = "Votre email ou votre mot de passe n'est pas valide.";
                     }
@@ -78,6 +72,10 @@ class LoginController extends AbstractController
         return $this->twig->render('login.html.twig', ['error' => $errors, 'user' => $userTab, 'movies' => $movies]);
     }
 
+    /**
+     * function pour se déconnecter
+     * @return void
+     */
     public function logout(): void
     {
         unset($_SESSION['user_id']);
