@@ -21,7 +21,10 @@ abstract class AbstractManager
     }
 
     /**
-     * Get all row from database.
+     * Récupération de tous les éléments de la table
+     * @param string $orderBy
+     * @param string $direction
+     * @return array
      */
     public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
     {

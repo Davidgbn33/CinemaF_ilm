@@ -62,8 +62,9 @@ class UserController extends AbstractController
                 $errors['firstname'] = "Le prénom est obligatoire";
             } else {
                 $userAdd['firstname'] = checkData($postData['firstname']);
-                if (!preg_match($pattern, $userAdd['lastname'])) {
-                    $errors['lastname'] = "Le nom n'est pas valide.
+                $pattern = '/^[A-Za-z\'-]+$/u';
+                if (!preg_match($pattern, $userAdd['firstname'])) {
+                    $errors['firstname'] = "Le nom n'est pas valide.
                      Il ne doit contenir que des lettres sans accent, des tirets ou des apostrophes.";
                 }
             }

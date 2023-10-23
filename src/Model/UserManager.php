@@ -49,16 +49,15 @@ class UserManager extends AbstractManager
         return (int)$this->pdo->lastInsertId();
     }
 
+    /**
+     * @param int $id
+     * @return array
+     */
     public function viewBookingUser(int $id): array
     {
         $sql = "SELECT b.id AS booking_id,
-       m.image,
-       b.nameBooking,
-       b.numberPlace,
-       b.totalPrice,
-       m.title,
-       c.startDate
-FROM booking b
+       m.image, b.nameBooking, b.numberPlace, b.totalPrice, m.title, c.startDate
+         FROM booking b
          INNER JOIN User u ON b.id_user = u.id
          INNER JOIN cinemaShow c ON b.id_CinemaShow = c.id
          INNER JOIN movie m ON c.id_movie = m.id
