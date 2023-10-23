@@ -82,31 +82,34 @@
                         </div>
                         <div class="col-md-7 col-md-offset-1 ">
                             <h2>HISTORIQUE</h2>
-                            {% for bookingUser in bookingUser %}
-                                <div class="d-flex">
-                                    <div class="card mb-3" style="max-width: 450px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <img src="/assets/images/{{ bookingUser.image }}"
-                                                     class="img-fluid rounded-start" alt="">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h3 class="card-text mb-1">Nom de la réservation
-                                                        : {{ bookingUser.nameBooking }}</h3>
-                                                    <h5 class="card-text my-1">Numéro de
-                                                        réservation {{ bookingUser.booking_id }}</h5>
-                                                    <h5 class="card-text my-2">Film : {{ bookingUser.title }}</h5>
-                                                    <h5 class="card-text my-2">Nombre de place : {{ bookingUser.numberPlace }}</h5>
-                                                    <h5 class="card-text my-2">Date de la séance
-                                                        : {{ bookingUser.startDate |date('d/m ') }} à {{ bookingUser.startDate |date('H') }}h{{ bookingUser.startDate |date('i') }}</h5>
-                                                    <h5 class="card-text mt-2">Prix : {{ bookingUser.totalPrice }} €</h5>
+                            {% if bookingUser %}
+                                {% for bookingUser in bookingUser %}
+                                    <div class="d-flex">
+                                        <div class="card mb-3" style="max-width: 450px;">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="/assets/images/{{ bookingUser.image }}"
+                                                         class="img-fluid rounded-start" alt="">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h3 class="card-text">Nom de la réservation
+                                                            : {{ bookingUser.nameBooking }}({{ bookingUser.booking_id }}
+                                                            )</h3>
+                                                        <h5 class="card-text">Film : {{ bookingUser.title }}</h5>
+                                                        <h5 class="card-text">Nombre de place
+                                                            : {{ bookingUser.numberPlace }}</h5>
+                                                        <h5 class="card-text">Date de la séance
+                                                            : {{ bookingUser.startDate }}</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <h3>Vous n'avez pas de réservation</h3>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
