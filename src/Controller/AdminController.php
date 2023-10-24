@@ -22,7 +22,6 @@ class AdminController extends AbstractController
         $userManager = new userManager();
         $movieManager = new MovieManager();
         return $this->extracted($userManager, $movieManager);
-
     }
 
     /**
