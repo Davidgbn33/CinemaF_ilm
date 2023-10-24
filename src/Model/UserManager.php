@@ -18,7 +18,7 @@ class UserManager extends AbstractManager
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function selectOneById(int $id): array
+    public function selectOneById(int $id): array | false
     {
         $query = "SELECT * FROM " . static::TABLE . " WHERE id = :id";
         $statement = $this->pdo->prepare($query);
