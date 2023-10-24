@@ -13,6 +13,7 @@ class AdminController extends AbstractController
     public function index(): string
     {
         $userManager = new userManager();
+
         $users = $userManager->selectAll();
         $userData = $_SESSION['user_id'] ?? [];
         if (isset($_SESSION['user_id'])) {
@@ -27,8 +28,8 @@ class AdminController extends AbstractController
                 'userData' => $userData,
                 'user' => $user]
         );
-    }
 
+    }
     /**
      * suppression d'un utilisateur
      * @param int $id

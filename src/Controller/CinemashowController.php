@@ -37,8 +37,8 @@ class CinemashowController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (
                 intval($_POST['nbr_seat_0']) < 0
-                || intval($_POST['nbr_seat_25'])
-                || intval($_POST['nbr_seat_50'])
+                || intval($_POST['nbr_seat_25']) < 0
+                || intval($_POST['nbr_seat_50']) < 0
                 ||
                     intval($_POST['nbr_seat_0']) +
                     intval($_POST['nbr_seat_25']) +
