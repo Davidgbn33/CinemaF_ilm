@@ -93,14 +93,15 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <h3 class="card-text">Nom de la réservation
-                                                            : {{ bookingUser.nameBooking }}({{ bookingUser.booking_id }}
-                                                            )</h3>
-                                                        <h5 class="card-text">Film : {{ bookingUser.title }}</h5>
-                                                        <h5 class="card-text">Nombre de place
+                                                        <h3 class="card-text my-1 mb-3">Nom de la réservation
+                                                            : {{ bookingUser.nameBooking }}</h3>
+                                                        <h5 class="card-text my-1">Numéro de réservation : {{ bookingUser.booking_id }}</h5>
+                                                        <h5 class="card-text my-1">Film : {{ bookingUser.title }}</h5>
+                                                        <h5 class="card-text my-1">Nombre de place
                                                             : {{ bookingUser.numberPlace }}</h5>
-                                                        <h5 class="card-text">Date de la séance
-                                                            : {{ bookingUser.startDate }}</h5>
+                                                        <h5 class="card-text my-1">Date de la séance
+                                                            : {{ bookingUser.startDate | date('d/m')}} à {{ bookingUser.startDate | date('h')}}h{{ bookingUser.startDate | date('i')}} </h5>
+                                                        <h5 class="card-text my-1">Montant :{{ bookingUser.totalPrice}} </h5>
                                                     </div>
                                                 </div>
                                             </div>
