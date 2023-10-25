@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\MovieManager;
 use App\Model\UserManager;
 
 class AdminController extends AbstractController
@@ -13,6 +14,8 @@ class AdminController extends AbstractController
     public function index(): string
     {
         $userManager = new userManager();
+        $movieManager = new MovieManager();
+        $movies = $movieManager->selectAll();
 
         $users = $userManager->selectAll();
         $userData = $_SESSION['user_id'] ?? [];
@@ -26,7 +29,8 @@ class AdminController extends AbstractController
             'Admin/admin.html.twig',
             ['users' => $users,
                 'userData' => $userData,
-                'user' => $user]
+                'user' => $user,
+                'movies' => $movies]
         );
 
     }
@@ -38,7 +42,9 @@ class AdminController extends AbstractController
     public function delete(int $id): string
     {
         $userManager = new UserManager();
+        $MovieManager = new MovieManager();
         $userManager->delete($id);
+        $movies = $MovieManager->selectAll();
         $users = $userManager->selectAll();
         $userData = $_SESSION['user_id'] ?? [];
         if (isset($_SESSION['user_id'])) {
@@ -47,6 +53,6 @@ class AdminController extends AbstractController
         } else {
             $user = [];
         }
-        return $this->twig->render('Admin/admin.html.twig', ['users' => $users, 'userData' => $userData, 'user' => $user]);
+        return $this->twig->render('Admin/admin.html.twig', ['users' => $users, 'userData' => $userData, 'user' => $user, 'movies' => $movies]);
     }
 }
